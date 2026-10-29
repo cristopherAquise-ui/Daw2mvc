@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS daw2mvc;
+USE daw2mvc;
 CREATE TABLE `usuarios` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
