@@ -1,0 +1,68 @@
+/* Paleta de colores oficial según el Moodboard */
+:root {
+    --bg-negro: #000000;
+    --bg-gris-oscuro: #262626;
+    --bg-gris-medio: #444444;
+    --amarillo-primario: #FFDC20;
+    --amarillo-secundario: #F5CE03;
+    --texto-blanco: #FFFFFF;
+}
+
+
+body {
+    background-color: var(--bg-negro) !important;
+    font-family: 'DIN Next', system-ui, -apple-system, sans-serif;
+    color: var(--texto-blanco);
+    
+}
+
+.icono-carrito{
+    height: 44px;
+}
+
+.mensaje-footer {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: #FFFFFF; 
+}
+
+/* Ajustes de marca y acentos visuales */
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+
+.text-warning, .navbar-brand {
+    color: rgb(254, 255, 255) !important;
+}
+
+/* Estilos de botones primarios basados en el Moodboard */
+.btn-starbites {
+    background-color: var(--amarillo-primario);
+    color: var(--bg-negro);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-starbites:hover {
+    background-color: var(--amarillo-secundario);
+    color: var(--bg-negro);
+    transform: scale(1.02);
+}
+
+
+/* Tarjetas para platos y categorías */
+.card-galactica {
+    background-color: var(--bg-gris-oscuro);
+    border: 1px solid var(--bg-gris-medio);
+    border-radius: 12px;
+    color: var(--texto-blanco);
+    transition: transform 0.2s;
+}
+
+.card-galactica:hover {
+    border-color: var(--amarillo-primario);
+}
