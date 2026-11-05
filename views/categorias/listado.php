@@ -1,5 +1,5 @@
 <h1 class="text-warning mb-4">Nuestras Categorías</h1>
-<img src="<?= url ?>public/img/productos/<?= htmlspecialchars($producto->getImagen(), ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?>" class="card-img-top">
+
 <div class="row row-cols-1 row-cols-md-2 g-4">
     <?php foreach ($categorias as $categoria) { ?>
         <div class="col">
