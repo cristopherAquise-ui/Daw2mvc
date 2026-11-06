@@ -1,26 +1,34 @@
-<h1 class="text-warning mb-4">Nuestra Carta Galáctica</h1>
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    <?php if (empty($productos)) { ?>
-        <p class="text-muted">No se encontraron productos en esta sección.</p>
-    <?php } else { ?>
-        <?php foreach ($productos as $producto) { ?>
-            <div class="col">
-                <div class="card card-galactica h-100 p-2">
-                    <img src="<?= url ?>public/img/productos/<?= htmlspecialchars($producto->getImagen(), ENT_QUOTES, 'UTF-8') ?>" 
-                         class="card-img-top rounded" 
-                         alt="<?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?>"
-                         style="height: 200px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-warning fw-bold"><?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?></h5>
-                        <p class="card-text text-secondary flex-grow-1"><?= htmlspecialchars($producto->getDescripcion(), ENT_QUOTES, 'UTF-8') ?></p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="fs-5 fw-bold text-light"><?= number_format((float)$producto->getPrecio(), 2, ',', '.') ?> €</span>
-                            <a href="<?= url ?>?controller=producto&action=detalle&id=<?= $producto->getId() ?>" class="btn btn-starbites btn-sm">Ver plato</a>
-                        </div>
+<!-- Cuadrícula de Platos -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    <?php foreach ($productos as $producto): ?>
+    <div class="col">
+        <div class="product-card-sw h-100">
+            
+            <div class="product-thumb">
+                <img src="<?= url ?>public/img/productos/<?= htmlspecialchars($producto->getImagen(), ENT_QUOTES, 'UTF-8') ?>" 
+                     alt="<?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?>"
+                     class="product-img-fit card-img-top">
+            </div>
+            
+            <div class="product-details p-3 d-flex flex-column justify-content-between h-100">
+                <div>
+                    <div class="decal-contain">
+                        <div class="decal"></div>
                     </div>
+                    
+                    <h5 class="product-title mt-2"><?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?></h5>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span class="product-price fw-bold"><?= number_format((float)$producto->getPrecio(), 2, ',', '.') ?> €</span>
+                    <a href="<?= url ?>?controller=producto&action=detalle&id=<?= $producto->getId() ?>" 
+                       class="btn btn-starbites rounded-circle p-0 d-inline-flex align-items-center justify-content-center btn-add-custom">
+                        +
+                    </a>
                 </div>
             </div>
-        <?php } ?>
-    <?php } ?>
+
+        </div>
+    </div>
+    <?php endforeach; ?>
 </div>

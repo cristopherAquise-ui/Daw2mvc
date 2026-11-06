@@ -1,10 +1,8 @@
 </main>
-
-    <!-- Footer -->
     <footer class="bg-black text-light py-4 border-top border-secondary mt-auto">
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
             <div class="d-flex align-items-center gap-2">
-                <img src="<?= url ?>public/svg/Logo-blanco-SVG.svg" alt="Star Bites Logo" style="height: 30px;">
+                <img src="<?= url ?>public/svg/Logo-blanco-SVG.svg" alt="Star Bites Logo" class="footer-logo">
             </div>
             
             <small class="mensaje-footer">

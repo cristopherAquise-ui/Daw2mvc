@@ -1,4 +1,4 @@
-/* Paleta de colores oficial según el Moodboard */
+/* Variables de color */
 :root {
     --bg-negro: #000000;
     --bg-gris-oscuro: #262626;
@@ -8,34 +8,22 @@
     --texto-blanco: #FFFFFF;
 }
 
-
+/* Base */
 body {
     background-color: var(--bg-negro) !important;
     font-family: 'DIN Next', system-ui, -apple-system, sans-serif;
     color: var(--texto-blanco);
-    
 }
 
-.icono-carrito{
-    height: 44px;
-}
+/* Utilidades */
+.icono-carrito { height: 44px; }
+.mensaje-footer { font-size: 0.9rem; letter-spacing: 1px; color: #FFFFFF; }
+.letter-spacing-2 { letter-spacing: 2px; }
+.text-warning, .navbar-brand { color: rgb(254, 255, 255) !important; }
+.footer-logo { height: 30px; }
+.hover-warning:hover { color: var(--amarillo-primario) !important; opacity: 1 !important; }
 
-.mensaje-footer {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    color: #FFFFFF; 
-}
-
-/* Ajustes de marca y acentos visuales */
-.letter-spacing-2 {
-    letter-spacing: 2px;
-}
-
-.text-warning, .navbar-brand {
-    color: rgb(254, 255, 255) !important;
-}
-
-/* Estilos de botones primarios basados en el Moodboard */
+/* Botones */
 .btn-starbites {
     background-color: var(--amarillo-primario);
     color: var(--bg-negro);
@@ -46,15 +34,20 @@ body {
     border: none;
     transition: all 0.2s ease-in-out;
 }
-
 .btn-starbites:hover {
     background-color: var(--amarillo-secundario);
     color: var(--bg-negro);
     transform: scale(1.02);
 }
+.btn-add-custom {
+    width: 35px; 
+    height: 35px; 
+    font-size: 1.5rem; 
+    line-height: 1;
+    text-decoration: none;
+}
 
-
-/* Tarjetas para platos y categorías */
+/* Tarjetas base */
 .card-galactica {
     background-color: var(--bg-gris-oscuro);
     border: 1px solid var(--bg-gris-medio);
@@ -62,7 +55,122 @@ body {
     color: var(--texto-blanco);
     transition: transform 0.2s;
 }
+.card-galactica:hover { border-color: var(--amarillo-primario); }
 
-.card-galactica:hover {
-    border-color: var(--amarillo-primario);
+/* Tarjeta Star Wars */
+.product-card-sw {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de la imagen (Modifica el height para cambiar el tamano de la foto) */
+.product-card-sw .product-thumb {
+    position: relative;
+    width: 100%;
+    height: 600px; 
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+.product-card-sw .product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Panel de texto----------------------------- */
+.product-card-sw .product-details {
+    background-color: #1d1e1f;
+    padding: 16px 14px 24px 14px;
+    position: relative;
+    box-sizing: border-box;
+    color: #b5b7b7;
+    flex-grow: 0;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-card-sw .product-title {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+.product-card-sw .product-price {
+    color: var(--amarillo-primario);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Corte diagonal inferior */
+.product-card-sw .product-details::before {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 45%;
+    border-top: 12px solid #1d1e1f;
+    border-right: 12px solid transparent;
+    z-index: 2;
+}
+.product-card-sw .product-details::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+    width: 18%;
+    box-sizing: border-box;
+    border-top: 12px solid #1d1e1f;
+    border-left: 12px solid transparent;
+    z-index: 2;
+}
+@media screen and (min-width: 960px) {
+    .product-card-sw .product-details::after { width: 10%; }
+}
+
+/* Efecto lineas led */
+.decal-contain { margin-bottom: 8px; }
+.decal-contain .decal {
+    position: relative;
+    display: inline-block;
+    height: 4px; 
+}
+.decal-contain .decal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 21px; 
+    border-top: 2px solid #5a5c5d; 
+    border-bottom: 2px solid #5a5c5d;
+    border-radius: 2px;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.decal-contain .decal::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 28px; 
+    width: 4px; 
+    border-top: 2px solid #5a5c5d;
+    border-bottom: 2px solid #5a5c5d;
+    border-radius: 2px;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.product-card-sw:hover .decal-contain .decal::before,
+.product-card-sw:hover .decal-contain .decal::after {
+    border-top: 2px solid #ffffff; 
+    border-bottom: 2px solid #ffffff;
+    box-shadow: 0 0 6px 1px #ffffff; 
 }
