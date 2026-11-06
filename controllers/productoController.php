@@ -1,5 +1,6 @@
 <?php
 include_once("models/ProductoDAO.php");
+include_once("models/IngredienteDAO.php");
 
 class productoController
 {
@@ -14,5 +15,17 @@ class productoController
 
         $view = "views/productos/listado.php";
         include_once 'views/main.php';
+    }
+    public function detalle()
+    {
+        if (isset($_GET['id'])) {
+            $id = (int)$_GET['id'];
+            $producto = ProductoDAO::getById($id);
+            $extras = IngredienteDAO::getExtrasByProducto($id);
+                        $view = "views/productos/detalle.php";
+            include_once 'views/main.php';
+        } else {
+            header("Location: " . url . "?controller=producto");
+        }
     }
 }

@@ -170,3 +170,13 @@ INSERT INTO producto_ingrediente (producto_id, ingrediente_id, cantidad) VALUES
 (34, 35, 1), (34, 37, 1), (34, 39, 1),    -- Cometa Dorado
 (35, 34, 1), (35, 37, 1), (35, 39, 1),    -- Nebulosa de Lichi
 (36, 33, 1), (36, 36, 1), (36, 38, 1);     -- Eclipse de Café
+
+USE daw2mvc;
+
+-- Actualiza la ruta añadiendo el nombre de la carpeta según la categoría
+UPDATE productos SET imagen = CONCAT('entrantes/', imagen) WHERE categoria_id = 1;
+UPDATE productos SET imagen = CONCAT('primeros/', imagen) WHERE categoria_id = 2;
+UPDATE productos SET imagen = CONCAT('segundos/', imagen) WHERE categoria_id = 3;
+UPDATE productos SET imagen = CONCAT('guarniciones/', imagen) WHERE categoria_id = 4;
+UPDATE productos SET imagen = CONCAT('postres/', imagen) WHERE categoria_id = 5;
+UPDATE productos SET imagen = CONCAT('bebidas/', imagen) WHERE categoria_id = 6;

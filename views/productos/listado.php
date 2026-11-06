@@ -16,7 +16,7 @@
                         <p class="card-text text-secondary flex-grow-1"><?= htmlspecialchars($producto->getDescripcion(), ENT_QUOTES, 'UTF-8') ?></p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <span class="fs-5 fw-bold text-light"><?= number_format((float)$producto->getPrecio(), 2, ',', '.') ?> €</span>
-                            <a href="#" class="btn btn-starbites btn-sm">Añadir</a>
+                            <a href="<?= url ?>?controller=producto&action=detalle&id=<?= $producto->getId() ?>" class="btn btn-starbites btn-sm">Ver plato</a>
                         </div>
                     </div>
                 </div>
