@@ -68,11 +68,11 @@ body {
     margin-bottom: 20px;
 }
 
-/* Contenedor de la imagen (Modifica el height para cambiar el tamano de la foto) */
+/* Contenedor de la imagen */
 .product-card-sw .product-thumb {
     position: relative;
     width: 100%;
-    height: 600px; 
+    height: 220px; 
     overflow: hidden;
     border-radius: 8px 8px 0 0;
 }
@@ -92,7 +92,7 @@ body {
     box-sizing: border-box;
     color: #b5b7b7;
     flex-grow: 0;
-    height: 160px;
+    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -173,4 +173,181 @@ body {
     border-top: 2px solid #ffffff; 
     border-bottom: 2px solid #ffffff;
     box-shadow: 0 0 6px 1px #ffffff; 
+}
+/* =========================================
+  parte 1 de inicio
+========================================= */
+/* 1. Bloquea el desbordamiento horizontal en toda la web */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 2. Ajuste del Hero para que encaje perfectamente con el header/footer */
+.hero-section {
+    background-image: url('../img/imagen-home.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Expansión horizontal exacta sin desbordar el viewport */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    min-height: 80vh;
+    margin-top: -3rem; /* Anula el margen del contenedor main */
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+/* degradado a la imagen de parte 1 de inicio */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 0;
+}
+
+/*parte 2 productos populares */
+.btn-read-more {
+    border-radius: 50px;
+    padding: 0.6rem 2.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* 1. Aumentar la altura de la imagen */
+.product-card-sw .product-thumb {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Subido de 250px a 350px (ajústalo a tu gusto: 320px, 380px, etc.) */
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+/*texto recuadros */
+.product-card-sw .product-title {
+    color: #ffffff;
+    font-size: 1.6rem; /* Aumentado a tamaño H1 (antes era 1rem) */
+    font-weight: 800;   /* Negrita intensa */
+    line-height: 1.28;  /* Interlineado ajustado para textos grandes */
+    margin-bottom: 12px;
+}
+
+/* 
+   Seccion Nosotros (Full Bleed con Fondo)
+
+   */
+.nosotros-section {
+    /* Degradado direccional: Oscuro a la derecha (0%), transparente a la izquierda (80%) */
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 80%), url('../img/imagen-nosotros.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /* Aumentamos la altura para ver más porción de la imagen (prueba 85vh o 90vh) */
+    min-height: 95vh; 
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+/* Utilidad para texto amarillo */
+.text-amarillo {
+    color: var(--amarillo-primario) !important;
+}
+
+.opacity-90 {
+    opacity: 0.9;
+}
+
+.logo-nosotros {
+    width: 100%;
+    max-width: 400px; 
+    position: relative;
+    top: -120px;
+}
+
+/*--------------------SECCION CONTACTO--------------------------------- */
+.contact-section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    min-height: 800px;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* Imagen al 50% derecho  */
+.contact-bg-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%; 
+    height: 100%;
+    background-image: url('../img/imagen-publi.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+/* Difuminado entre el fondo negro y la imagen derecha */
+.contact-bg-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px; 
+    height: 100%;
+    background: linear-gradient(to right, var(--bg-negro) 0%, transparent 100%);
+}
+
+/* Caja gris del formulario */
+.contact-card {
+    background-color: var(--bg-gris-oscuro); 
+    border: none;
+    margin-top: 2rem;
+    max-width: 950px; 
+}
+
+/* Ajuste de iconos */
+.contact-icon {
+    width: 22px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Textos pequeños para las etiquetas del form */
+.fs-7 {
+    font-size: 0.85rem;
+}
+
+/* Inputs negros y sin bordes */
+.contact-input {
+    background-color: var(--bg-negro) !important;
+    border: none !important;
+    color: var(--texto-blanco) !important;
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+}
+
+/* Contorno amarillo al hacer clic en un input */
+.contact-input:focus {
+    box-shadow: 0 0 0 2px var(--amarillo-primario) !important;
+    outline: none;
 }

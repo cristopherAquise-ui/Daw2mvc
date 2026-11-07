@@ -10,7 +10,7 @@
                      class="product-img-fit card-img-top">
             </div>
             
-            <div class="product-details p-3 d-flex flex-column justify-content-between h-100">
+            <div class="product-details p-3 d-flex flex-column justify-content-between">
                 <div>
                     <div class="decal-contain">
                         <div class="decal"></div>
