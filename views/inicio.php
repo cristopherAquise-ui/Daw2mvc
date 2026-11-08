@@ -4,9 +4,9 @@
     <div class="hero-overlay"></div>
     
     <div class="container position-relative z-1">
-        <div class="col-12 col-md-8 col-lg-6 text-center text-md-start">
+        <div class="col-12 col-md-8 col-lg-8 text-center text-md-star">
             <h1 class="display-4 fw-bold mb-4 text-white">
-                Bienvenido al lado oscuro
+                Bienvenido al lado oscuro <br>
                 Donde la comida es de otro planeta
             </h1>
             <a href="<?= url ?>?controller=categoria" class="btn btn-starbites mt-3">RESERVAS</a>
@@ -100,13 +100,13 @@
     <div class="contact-bg-image"></div>
 
     <div class="container position-relative z-1">
-        <h2 class="text-uppercase fw-bold mb-4 text-white">CONTACTO</h2>
+        <h2 class=" fw-bold mb-4 text-white">Contacto</h2>
         
         <!-- Contenedor principal -->
         <div class="contact-card p-4 p-md-5 rounded-4 shadow-lg">
             <div class="row align-items-center">
                 
-                <!-- Columna Izquierda: Coordenadas -->
+                <!-- Columna izq -->
                 <div class="col-md-6 pe-md-5 mb-5 mb-md-0">
                     <h3 class="fw-bold mb-4 text-white">Nuestras Coordenadas</h3>
                     <p class="text-light opacity-75 mb-4 fs-6">
@@ -114,7 +114,6 @@
                     </p>
                     <ul class="list-unstyled text-light">
                         <li class="mb-3 d-flex align-items-center">
-                            <!-- Cambia el src por tu icono real -->
                             <img src="<?= url ?>public/svg/icono/localizacion-svg.svg" alt="Ubicación" class="contact-icon me-3">
                             <span>Sector Corellia, Bloque 4, Coruscant</span>
                         </li>

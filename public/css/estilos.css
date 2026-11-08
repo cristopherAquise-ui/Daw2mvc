@@ -1,4 +1,40 @@
-/* Variables de color */
+/* =========================================
+   ÍNDICE DE ESTILOS
+   0. Fuentes Personalizadas
+   1. Variables y Base
+   2. Utilidades Generales
+   3. Botones
+   4. Tarjetas (Cards)
+   5. Inicio: Hero (Portada)
+   6. Inicio: Productos Populares
+   7. Inicio: Nosotros
+   8. Inicio: Contacto
+========================================= */
+/* =========================================
+   0. FUENTES PERSONALIZADAS
+========================================= */
+
+/* 1. Fuente Normal (Para textos generales) */
+@font-face {
+    font-family: 'DIN Next';
+    src: url('../fonts/DINNextW1G-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 2. Fuente Negrita (Para títulos y precios) */
+@font-face {
+    font-family: 'DIN Next';
+    src: url('../fonts/DINNextW1G-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =========================================
+   1. VARIABLES Y BASE
+========================================= */
 :root {
     --bg-negro: #000000;
     --bg-gris-oscuro: #262626;
@@ -8,14 +44,22 @@
     --texto-blanco: #FFFFFF;
 }
 
-/* Base */
 body {
     background-color: var(--bg-negro) !important;
     font-family: 'DIN Next', system-ui, -apple-system, sans-serif;
     color: var(--texto-blanco);
 }
 
-/* Utilidades */
+/* Evitar scroll horizontal en toda la web */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+
+/* =========================================
+   2. UTILIDADES GENERALES
+========================================= */
 .icono-carrito { height: 44px; }
 .mensaje-footer { font-size: 0.9rem; letter-spacing: 1px; color: #FFFFFF; }
 .letter-spacing-2 { letter-spacing: 2px; }
@@ -23,7 +67,16 @@ body {
 .footer-logo { height: 30px; }
 .hover-warning:hover { color: var(--amarillo-primario) !important; opacity: 1 !important; }
 
-/* Botones */
+/* Texto amarillo */
+.text-amarillo { color: var(--amarillo-primario) !important; }
+/* Opacidad al 90% */
+.opacity-90 { opacity: 0.9; }
+
+
+/* =========================================
+   3. BOTONES
+========================================= */
+/* Botón principal amarillo */
 .btn-starbites {
     background-color: var(--amarillo-primario);
     color: var(--bg-negro);
@@ -39,6 +92,8 @@ body {
     color: var(--bg-negro);
     transform: scale(1.02);
 }
+
+/* Botón agregar custom */
 .btn-add-custom {
     width: 35px; 
     height: 35px; 
@@ -47,7 +102,19 @@ body {
     text-decoration: none;
 }
 
-/* Tarjetas base */
+/* Botón redondeado de "Read More" */
+.btn-read-more {
+    border-radius: 50px;
+    padding: 0.6rem 2.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   4. TARJETAS (CARDS)
+========================================= */
+/* Tarjeta básica */
 .card-galactica {
     background-color: var(--bg-gris-oscuro);
     border: 1px solid var(--bg-gris-medio);
@@ -57,7 +124,7 @@ body {
 }
 .card-galactica:hover { border-color: var(--amarillo-primario); }
 
-/* Tarjeta Star Wars */
+/* Tarjeta temática Star Wars */
 .product-card-sw {
     width: 100%;
     position: relative;
@@ -68,11 +135,11 @@ body {
     margin-bottom: 20px;
 }
 
-/* Contenedor de la imagen */
+/* Imagen de la tarjeta */
 .product-card-sw .product-thumb {
     position: relative;
     width: 100%;
-    height: 220px; 
+    height: 350px; /* Altura de la imagen */
     overflow: hidden;
     border-radius: 8px 8px 0 0;
 }
@@ -84,25 +151,28 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Panel de texto----------------------------- */
+/* Panel de texto oscuro */
 .product-card-sw .product-details {
     background-color: #1d1e1f;
-    padding: 16px 14px 24px 14px;
+    padding: 16px 14px 25px 14px; 
     position: relative;
     box-sizing: border-box;
     color: #b5b7b7;
-    flex-grow: 0;
-    height: 180px;
+    flex-grow: 1; 
+    min-height: 140px; /* Reducido de 220px a 140px */
+    height: auto; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* Cambiado a flex-start para pegarlo arriba */
 }
+
+/* Título de la tarjeta */
 .product-card-sw .product-title {
     color: #ffffff;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 8px;
-    line-height: 1.3;
+    font-size: 1.6rem; 
+    font-weight: 800; 
+    line-height: 1.28; 
+    margin-bottom: 12px;
 }
 .product-card-sw .product-price {
     color: var(--amarillo-primario);
@@ -137,60 +207,36 @@ body {
     .product-card-sw .product-details::after { width: 10%; }
 }
 
-/* Efecto lineas led */
+/* Efecto de líneas LED inferiores */
 .decal-contain { margin-bottom: 8px; }
-.decal-contain .decal {
-    position: relative;
-    display: inline-block;
-    height: 4px; 
-}
+.decal-contain .decal { position: relative; display: inline-block; height: 4px; }
 .decal-contain .decal::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 21px; 
-    border-top: 2px solid #5a5c5d; 
-    border-bottom: 2px solid #5a5c5d;
-    border-radius: 2px;
-    box-shadow: none;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    content: ""; position: absolute; top: 0; left: 0; width: 21px; 
+    border-top: 2px solid #5a5c5d; border-bottom: 2px solid #5a5c5d;
+    border-radius: 2px; box-shadow: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .decal-contain .decal::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 28px; 
-    width: 4px; 
-    border-top: 2px solid #5a5c5d;
-    border-bottom: 2px solid #5a5c5d;
-    border-radius: 2px;
-    box-shadow: none;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    content: ""; position: absolute; top: 0; left: 28px; width: 4px; 
+    border-top: 2px solid #5a5c5d; border-bottom: 2px solid #5a5c5d;
+    border-radius: 2px; box-shadow: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .product-card-sw:hover .decal-contain .decal::before,
 .product-card-sw:hover .decal-contain .decal::after {
-    border-top: 2px solid #ffffff; 
-    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff;
     box-shadow: 0 0 6px 1px #ffffff; 
 }
-/* =========================================
-  parte 1 de inicio
-========================================= */
-/* 1. Bloquea el desbordamiento horizontal en toda la web */
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-}
 
-/* 2. Ajuste del Hero para que encaje perfectamente con el header/footer */
+
+/* =========================================
+   5. INICIO: HERO (PORTADA)
+========================================= */
 .hero-section {
     background-image: url('../img/imagen-home.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
-    /* Expansión horizontal exacta sin desbordar el viewport */
+    /* Ancho total sin desbordar */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -199,11 +245,12 @@ html, body {
     margin-right: -50vw;
     
     min-height: 80vh;
-    margin-top: -3rem; /* Anula el margen del contenedor main */
+    margin-top: -3rem; 
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
-/* degradado a la imagen de parte 1 de inicio */
+
+/* Capa semitransparente sobre la imagen */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -214,43 +261,24 @@ html, body {
     z-index: 0;
 }
 
-/*parte 2 productos populares */
-.btn-read-more {
-    border-radius: 50px;
-    padding: 0.6rem 2.5rem;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-}
 
-/* 1. Aumentar la altura de la imagen */
-.product-card-sw .product-thumb {
-    position: relative;
-    width: 100%;
-    height: 350px; /* Subido de 250px a 350px (ajústalo a tu gusto: 320px, 380px, etc.) */
-    overflow: hidden;
-    border-radius: 8px 8px 0 0;
-}
+/* =========================================
+   6. INICIO: PRODUCTOS POPULARES
+========================================= */
+/* (Esta sección usa los estilos de la tarjeta .product-card-sw) */
 
-/*texto recuadros */
-.product-card-sw .product-title {
-    color: #ffffff;
-    font-size: 1.6rem; /* Aumentado a tamaño H1 (antes era 1rem) */
-    font-weight: 800;   /* Negrita intensa */
-    line-height: 1.28;  /* Interlineado ajustado para textos grandes */
-    margin-bottom: 12px;
-}
 
-/* 
-   Seccion Nosotros (Full Bleed con Fondo)
-
-   */
+/* =========================================
+   7. INICIO: NOSOTROS
+========================================= */
 .nosotros-section {
-    /* Degradado direccional: Oscuro a la derecha (0%), transparente a la izquierda (80%) */
+    /* Fondo con degradado direccional y foto */
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 80%), url('../img/imagen-nosotros.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
+    /* Ancho total */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -258,47 +286,44 @@ html, body {
     margin-left: -50vw;
     margin-right: -50vw;
     
-    /* Aumentamos la altura para ver más porción de la imagen (prueba 85vh o 90vh) */
     min-height: 95vh; 
     padding-top: 4rem;
     padding-bottom: 4rem;
 }
-/* Utilidad para texto amarillo */
-.text-amarillo {
-    color: var(--amarillo-primario) !important;
-}
 
-.opacity-90 {
-    opacity: 0.9;
-}
-
+/* Ajuste del logo principal */
 .logo-nosotros {
     width: 100%;
     max-width: 400px; 
     position: relative;
-    top: -120px;
+    top: -150px;
 }
 
-/*--------------------SECCION CONTACTO--------------------------------- */
+
+/* =========================================
+   8. INICIO: CONTACTO
+========================================= */
 .contact-section {
+    /* Ancho total */
     width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    
     overflow: hidden;
     min-height: 800px;
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
 
-/* Imagen al 50% derecho  */
+/* Imagen lateral anclada a la derecha */
 .contact-bg-image {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50%; 
+    width: 32%; 
     height: 100%;
     background-image: url('../img/imagen-publi.jpg'); 
     background-size: cover;
@@ -306,7 +331,7 @@ html, body {
     z-index: 0;
 }
 
-/* Difuminado entre el fondo negro y la imagen derecha */
+/* Difuminado sutil para fusionar la imagen con el negro */
 .contact-bg-image::before {
     content: '';
     position: absolute;
@@ -317,7 +342,7 @@ html, body {
     background: linear-gradient(to right, var(--bg-negro) 0%, transparent 100%);
 }
 
-/* Caja gris del formulario */
+/* Contenedor del formulario y datos */
 .contact-card {
     background-color: var(--bg-gris-oscuro); 
     border: none;
@@ -325,19 +350,19 @@ html, body {
     max-width: 950px; 
 }
 
-/* Ajuste de iconos */
+/* Iconos de contacto (teléfono, email, etc.) */
 .contact-icon {
     width: 22px;
     height: auto;
     object-fit: contain;
 }
 
-/* Textos pequeños para las etiquetas del form */
+/* Tamaño de letra pequeño para etiquetas */
 .fs-7 {
     font-size: 0.85rem;
 }
 
-/* Inputs negros y sin bordes */
+/* Inputs oscuros sin bordes */
 .contact-input {
     background-color: var(--bg-negro) !important;
     border: none !important;
@@ -345,9 +370,125 @@ html, body {
     border-radius: 8px;
     padding: 0.8rem 1rem;
 }
-
-/* Contorno amarillo al hacer clic en un input */
 .contact-input:focus {
     box-shadow: 0 0 0 2px var(--amarillo-primario) !important;
     outline: none;
+}
+
+/* Color personalizado para la línea inferior del Header */
+header.border-bottom {
+    border-bottom: 1px solid #48494a !important;
+}
+
+/* Aseguramos que el enlace sea el ancla de la posición */
+header .nav-link {
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Color del texto cuando está activo (blanco) */
+header .nav-link.active {
+    color: #ffffff !important; 
+}
+
+/* La línea blanca con resplandor que pisa el borde */
+header .nav-link.active::after {
+    content: "";
+    position: absolute;
+    /* Tu <header> tiene la clase py-3 (16px de padding). 
+       Bajamos la línea ~17px para que monte exactamente sobre el border-bottom */
+    bottom: -8px; 
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    display: block;
+}
+
+/* Efecto hover opcional: resplandor más tenue si pasan el ratón por las otras secciones */
+header .nav-link:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    display: block;
+}
+/* Color base de los enlaces (el gris de la imagen) */
+header .nav-link {
+    color: #b5b7b7 !important; 
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Color blanco al pasar el cursor por encima o estar activo */
+header .nav-link:hover,
+header .nav-link.active {
+    color: #ffffff !important; 
+}/* Color base de los enlaces (el gris de la imagen) */
+header .nav-link {
+    color: #b5b7b7 !important; 
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Color blanco al pasar el cursor por encima o estar activo */
+header .nav-link:hover,
+header .nav-link.active {
+    color: #ffffff !important; 
+}
+/* =========================================
+   Navegación Secundaria Carta (Efecto Iluminado)
+========================================= */
+
+/* Contenedor del submenú con línea base gris */
+.carta-subnav-container {
+    border-bottom: 1px solid #48494a;
+}
+
+/* Color base gris e inactivo */
+.subnav-link {
+    color: #b5b7b7 !important;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Texto blanco en hover o activo */
+.subnav-link:hover,
+.subnav-link.active {
+    color: #ffffff !important;
+}
+
+/* Línea blanca brillante activa sobre la línea gris */
+.subnav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -9px; /* Ajusta este valor si requiere montarse exacto en la línea */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    display: block;
+}
+
+/* Efecto tenue al pasar el ratón */
+.subnav-link:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    display: block;
 }
