@@ -1,20 +1,21 @@
 /* =========================================
-   ÍNDICE DE ESTILOS
-   0. Fuentes Personalizadas
+   INDICE DE ESTILOS
+   0. Fuentes
    1. Variables y Base
    2. Utilidades Generales
-   3. Botones
-   4. Tarjetas (Cards)
-   5. Inicio: Hero (Portada)
-   6. Inicio: Productos Populares
+   3. Navegacion (Menu y Submenu)
+   4. Botones
+   5. Tarjetas (Cards)
+   6. Inicio: Portada (Hero)
    7. Inicio: Nosotros
    8. Inicio: Contacto
 ========================================= */
+
 /* =========================================
-   0. FUENTES PERSONALIZADAS
+   0. FUENTES
 ========================================= */
 
-/* 1. Fuente Normal (Para textos generales) */
+/* Fuente normal para textos generales */
 @font-face {
     font-family: 'DIN Next';
     src: url('../fonts/DINNextW1G-Regular.otf') format('opentype');
@@ -23,7 +24,7 @@
     font-display: swap;
 }
 
-/* 2. Fuente Negrita (Para títulos y precios) */
+/* Fuente negrita para titulos y precios */
 @font-face {
     font-family: 'DIN Next';
     src: url('../fonts/DINNextW1G-Bold.otf') format('opentype');
@@ -50,12 +51,11 @@ body {
     color: var(--texto-blanco);
 }
 
-/* Evitar scroll horizontal en toda la web */
+/* Evitar scroll horizontal global */
 html, body {
     overflow-x: hidden;
     width: 100%;
 }
-
 
 /* =========================================
    2. UTILIDADES GENERALES
@@ -67,16 +67,111 @@ html, body {
 .footer-logo { height: 30px; }
 .hover-warning:hover { color: var(--amarillo-primario) !important; opacity: 1 !important; }
 
-/* Texto amarillo */
+/* Colores y opacidad */
 .text-amarillo { color: var(--amarillo-primario) !important; }
-/* Opacidad al 90% */
 .opacity-90 { opacity: 0.9; }
 
+/* =========================================
+   3. NAVEGACION (MENU Y SUBMENU)
+========================================= */
+
+/* Linea inferior del header */
+header.border-bottom {
+    border-bottom: 1px solid #48494a !important;
+}
+
+/* Enlaces del header */
+header .nav-link {
+    color: #b5b7b7 !important;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Enlaces del header al pasar el raton o activos */
+header .nav-link:hover,
+header .nav-link.active {
+    color: #ffffff !important; 
+}
+
+/* Efecto linea resplandor en header activo */
+header .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -8px; 
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    display: block;
+}
+
+/* Efecto linea resplandor tenue en header hover */
+header .nav-link:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    display: block;
+}
+
+/* Contenedor del submenu de Carta */
+.carta-subnav-container {
+    border-bottom: 1px solid #48494a;
+}
+
+/* Enlaces del submenu */
+.subnav-link {
+    color: #b5b7b7 !important;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Enlaces del submenu al pasar el raton o activos */
+.subnav-link:hover,
+.subnav-link.active {
+    color: #ffffff !important;
+}
+
+/* Efecto linea resplandor en submenu activo */
+.subnav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    display: block;
+}
+
+/* Efecto linea resplandor tenue en submenu hover */
+.subnav-link:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    display: block;
+}
 
 /* =========================================
-   3. BOTONES
+   4. BOTONES
 ========================================= */
-/* Botón principal amarillo */
+
+/* Boton principal amarillo */
 .btn-starbites {
     background-color: var(--amarillo-primario);
     color: var(--bg-negro);
@@ -93,7 +188,7 @@ html, body {
     transform: scale(1.02);
 }
 
-/* Botón agregar custom */
+/* Boton de agregar al carrito (Simbolo +) */
 .btn-add-custom {
     width: 35px; 
     height: 35px; 
@@ -102,7 +197,7 @@ html, body {
     text-decoration: none;
 }
 
-/* Botón redondeado de "Read More" */
+/* Boton redondeado leer mas */
 .btn-read-more {
     border-radius: 50px;
     padding: 0.6rem 2.5rem;
@@ -110,11 +205,11 @@ html, body {
     letter-spacing: 1px;
 }
 
-
 /* =========================================
-   4. TARJETAS (CARDS)
+   5. TARJETAS (CARDS)
 ========================================= */
-/* Tarjeta básica */
+
+/* Tarjeta basica */
 .card-galactica {
     background-color: var(--bg-gris-oscuro);
     border: 1px solid var(--bg-gris-medio);
@@ -124,7 +219,7 @@ html, body {
 }
 .card-galactica:hover { border-color: var(--amarillo-primario); }
 
-/* Tarjeta temática Star Wars */
+/* Tarjeta tematica Carta */
 .product-card-sw {
     width: 100%;
     position: relative;
@@ -139,7 +234,7 @@ html, body {
 .product-card-sw .product-thumb {
     position: relative;
     width: 100%;
-    height: 350px; /* Altura de la imagen */
+    height: 350px;
     overflow: hidden;
     border-radius: 8px 8px 0 0;
 }
@@ -151,22 +246,21 @@ html, body {
     transition: transform 0.3s ease;
 }
 
-/* Panel de texto oscuro */
+/* Panel de texto oscuro en tarjetas */
 .product-card-sw .product-details {
     background-color: #1d1e1f;
-    padding: 16px 14px 25px 14px; 
+    padding: 16px 14px 26px 14px; 
     position: relative;
     box-sizing: border-box;
     color: #b5b7b7;
     flex-grow: 1; 
-    min-height: 140px; /* Reducido de 220px a 140px */
+    min-height: 155px;
     height: auto; 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Cambiado a flex-start para pegarlo arriba */
 }
 
-/* Título de la tarjeta */
+/* Titulo y precio de tarjeta */
 .product-card-sw .product-title {
     color: #ffffff;
     font-size: 1.6rem; 
@@ -180,7 +274,7 @@ html, body {
     font-size: 1.1rem;
 }
 
-/* Corte diagonal inferior */
+/* Adorno de corte diagonal inferior */
 .product-card-sw .product-details::before {
     content: "";
     position: absolute;
@@ -207,7 +301,7 @@ html, body {
     .product-card-sw .product-details::after { width: 10%; }
 }
 
-/* Efecto de líneas LED inferiores */
+/* Efecto decorativo LED inferior */
 .decal-contain { margin-bottom: 8px; }
 .decal-contain .decal { position: relative; display: inline-block; height: 4px; }
 .decal-contain .decal::before {
@@ -220,15 +314,16 @@ html, body {
     border-top: 2px solid #5a5c5d; border-bottom: 2px solid #5a5c5d;
     border-radius: 2px; box-shadow: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
+/* Iluminar LED al pasar el raton */
 .product-card-sw:hover .decal-contain .decal::before,
 .product-card-sw:hover .decal-contain .decal::after {
     border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff;
     box-shadow: 0 0 6px 1px #ffffff; 
 }
 
-
 /* =========================================
-   5. INICIO: HERO (PORTADA)
+   6. INICIO: PORTADA (HERO)
 ========================================= */
 .hero-section {
     background-image: url('../img/imagen-home.jpg'); 
@@ -236,7 +331,7 @@ html, body {
     background-position: center;
     background-repeat: no-repeat;
     
-    /* Ancho total sin desbordar */
+    /* Ocupar ancho total pantalla */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -250,7 +345,7 @@ html, body {
     padding-bottom: 5rem;
 }
 
-/* Capa semitransparente sobre la imagen */
+/* Capa oscura semitransparente fondo */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -261,24 +356,17 @@ html, body {
     z-index: 0;
 }
 
-
-/* =========================================
-   6. INICIO: PRODUCTOS POPULARES
-========================================= */
-/* (Esta sección usa los estilos de la tarjeta .product-card-sw) */
-
-
 /* =========================================
    7. INICIO: NOSOTROS
 ========================================= */
 .nosotros-section {
-    /* Fondo con degradado direccional y foto */
+    /* Degradado oscuro para integrar texto y foto */
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 80%), url('../img/imagen-nosotros.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
-    /* Ancho total */
+    /* Ocupar ancho total pantalla */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -291,7 +379,7 @@ html, body {
     padding-bottom: 4rem;
 }
 
-/* Ajuste del logo principal */
+/* Posicion del logo seccion nosotros */
 .logo-nosotros {
     width: 100%;
     max-width: 400px; 
@@ -299,12 +387,11 @@ html, body {
     top: -150px;
 }
 
-
 /* =========================================
    8. INICIO: CONTACTO
 ========================================= */
 .contact-section {
-    /* Ancho total */
+    /* Ocupar ancho total pantalla */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -318,7 +405,7 @@ html, body {
     padding-bottom: 5rem;
 }
 
-/* Imagen lateral anclada a la derecha */
+/* Imagen de fondo lado derecho */
 .contact-bg-image {
     position: absolute;
     top: 0;
@@ -331,7 +418,7 @@ html, body {
     z-index: 0;
 }
 
-/* Difuminado sutil para fusionar la imagen con el negro */
+/* Transicion de la imagen con el fondo oscuro */
 .contact-bg-image::before {
     content: '';
     position: absolute;
@@ -342,7 +429,7 @@ html, body {
     background: linear-gradient(to right, var(--bg-negro) 0%, transparent 100%);
 }
 
-/* Contenedor del formulario y datos */
+/* Tarjeta del formulario de contacto */
 .contact-card {
     background-color: var(--bg-gris-oscuro); 
     border: none;
@@ -350,19 +437,17 @@ html, body {
     max-width: 950px; 
 }
 
-/* Iconos de contacto (teléfono, email, etc.) */
+/* Iconos redes e info de contacto */
 .contact-icon {
     width: 22px;
     height: auto;
     object-fit: contain;
 }
 
-/* Tamaño de letra pequeño para etiquetas */
-.fs-7 {
-    font-size: 0.85rem;
-}
+/* Texto pequeno para utilidades */
+.fs-7 { font-size: 0.85rem; }
 
-/* Inputs oscuros sin bordes */
+/* Campos de formulario */
 .contact-input {
     background-color: var(--bg-negro) !important;
     border: none !important;
@@ -370,125 +455,9 @@ html, body {
     border-radius: 8px;
     padding: 0.8rem 1rem;
 }
+
+/* Resalte de campos al seleccionarlos */
 .contact-input:focus {
     box-shadow: 0 0 0 2px var(--amarillo-primario) !important;
     outline: none;
-}
-
-/* Color personalizado para la línea inferior del Header */
-header.border-bottom {
-    border-bottom: 1px solid #48494a !important;
-}
-
-/* Aseguramos que el enlace sea el ancla de la posición */
-header .nav-link {
-    position: relative;
-    transition: color 0.2s ease-in-out;
-}
-
-/* Color del texto cuando está activo (blanco) */
-header .nav-link.active {
-    color: #ffffff !important; 
-}
-
-/* La línea blanca con resplandor que pisa el borde */
-header .nav-link.active::after {
-    content: "";
-    position: absolute;
-    /* Tu <header> tiene la clase py-3 (16px de padding). 
-       Bajamos la línea ~17px para que monte exactamente sobre el border-bottom */
-    bottom: -8px; 
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 0.9);
-    border-radius: 4px;
-    display: block;
-}
-
-/* Efecto hover opcional: resplandor más tenue si pasan el ratón por las otras secciones */
-header .nav-link:hover::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.4);
-    border-radius: 4px;
-    display: block;
-}
-/* Color base de los enlaces (el gris de la imagen) */
-header .nav-link {
-    color: #b5b7b7 !important; 
-    position: relative;
-    transition: color 0.2s ease-in-out;
-}
-
-/* Color blanco al pasar el cursor por encima o estar activo */
-header .nav-link:hover,
-header .nav-link.active {
-    color: #ffffff !important; 
-}/* Color base de los enlaces (el gris de la imagen) */
-header .nav-link {
-    color: #b5b7b7 !important; 
-    position: relative;
-    transition: color 0.2s ease-in-out;
-}
-
-/* Color blanco al pasar el cursor por encima o estar activo */
-header .nav-link:hover,
-header .nav-link.active {
-    color: #ffffff !important; 
-}
-/* =========================================
-   Navegación Secundaria Carta (Efecto Iluminado)
-========================================= */
-
-/* Contenedor del submenú con línea base gris */
-.carta-subnav-container {
-    border-bottom: 1px solid #48494a;
-}
-
-/* Color base gris e inactivo */
-.subnav-link {
-    color: #b5b7b7 !important;
-    position: relative;
-    transition: color 0.2s ease-in-out;
-}
-
-/* Texto blanco en hover o activo */
-.subnav-link:hover,
-.subnav-link.active {
-    color: #ffffff !important;
-}
-
-/* Línea blanca brillante activa sobre la línea gris */
-.subnav-link.active::after {
-    content: "";
-    position: absolute;
-    bottom: -9px; /* Ajusta este valor si requiere montarse exacto en la línea */
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 0.9);
-    border-radius: 4px;
-    display: block;
-}
-
-/* Efecto tenue al pasar el ratón */
-.subnav-link:hover::after {
-    content: "";
-    position: absolute;
-    bottom: -9px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0px 0px 6px 1px rgba(255, 255, 255, 0.4);
-    border-radius: 4px;
-    display: block;
 }
