@@ -3,7 +3,7 @@ class inicioController
 {
     public function index()
     {
-        $view = "views/inicio.php";
+        $vista = "views/inicio.php";
         include_once 'views/main.php';
     }
 }

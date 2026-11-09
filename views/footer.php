@@ -2,10 +2,10 @@
     <footer class="bg-black text-light py-4 border-top border-secondary mt-auto">
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
             <div class="d-flex align-items-center gap-2">
-                <img src="<?= url ?>public/svg/Logo-blanco-SVG.svg" alt="Star Bites Logo" class="footer-logo">
+                <img src="<?= url ?>public/svg/Logo-blanco-SVG.svg" alt="Star Bites Logo" class="logo-footer">
             </div>
             
-            <small class="mensaje-footer">
+            <small class="texto-footer">
                 &copy; <?= date('Y') ?> Star Bites. Todos los derechos reservados.
             </small>
 

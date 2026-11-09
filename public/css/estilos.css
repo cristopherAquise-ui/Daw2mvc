@@ -1,21 +1,22 @@
 /* =========================================
-   INDICE DE ESTILOS
-   0. Fuentes
-   1. Variables y Base
-   2. Utilidades Generales
-   3. Navegacion (Menu y Submenu)
-   4. Botones
-   5. Tarjetas (Cards)
-   6. Inicio: Portada (Hero)
-   7. Inicio: Nosotros
-   8. Inicio: Contacto
+   INDICE
+   1. FUENTES
+   2. COLORES Y BASE
+   3. UTILIDADES
+   4. MENU
+   5. BOTONES
+   6. TARJETAS
+   7. PORTADA
+   8. NOSOTROS
+   9. CONTACTO
+   10. PRODUCTO
 ========================================= */
 
 /* =========================================
-   0. FUENTES
+   1. FUENTES
 ========================================= */
 
-/* Fuente normal para textos generales */
+/* fuente normal */
 @font-face {
     font-family: 'DIN Next';
     src: url('../fonts/DINNextW1G-Regular.otf') format('opentype');
@@ -24,7 +25,7 @@
     font-display: swap;
 }
 
-/* Fuente negrita para titulos y precios */
+/* fuente negrita */
 @font-face {
     font-family: 'DIN Next';
     src: url('../fonts/DINNextW1G-Bold.otf') format('opentype');
@@ -34,7 +35,7 @@
 }
 
 /* =========================================
-   1. VARIABLES Y BASE
+   2. COLORES Y BASE
 ========================================= */
 :root {
     --bg-negro: #000000;
@@ -51,49 +52,49 @@ body {
     color: var(--texto-blanco);
 }
 
-/* Evitar scroll horizontal global */
+/* sin scroll horizontal */
 html, body {
     overflow-x: hidden;
     width: 100%;
 }
 
 /* =========================================
-   2. UTILIDADES GENERALES
+   3. UTILIDADES
 ========================================= */
 .icono-carrito { height: 44px; }
-.mensaje-footer { font-size: 0.9rem; letter-spacing: 1px; color: #FFFFFF; }
-.letter-spacing-2 { letter-spacing: 2px; }
+.texto-footer { font-size: 0.9rem; letter-spacing: 1px; color: #FFFFFF; }
+.espaciado-letras { letter-spacing: 2px; }
 .text-warning, .navbar-brand { color: rgb(254, 255, 255) !important; }
-.footer-logo { height: 30px; }
-.hover-warning:hover { color: var(--amarillo-primario) !important; opacity: 1 !important; }
+.logo-footer { height: 30px; }
+.brillo-amarillo:hover { color: var(--amarillo-primario) !important; opacity: 1 !important; }
 
-/* Colores y opacidad */
-.text-amarillo { color: var(--amarillo-primario) !important; }
-.opacity-90 { opacity: 0.9; }
+/* colores */
+.texto-amarillo { color: var(--amarillo-primario) !important; }
+.casi-opaco { opacity: 0.9; }
 
 /* =========================================
-   3. NAVEGACION (MENU Y SUBMENU)
+   4. MENU
 ========================================= */
 
-/* Linea inferior del header */
+/* linea del header */
 header.border-bottom {
     border-bottom: 1px solid #48494a !important;
 }
 
-/* Enlaces del header */
+/* enlaces del header */
 header .nav-link {
     color: #b5b7b7 !important;
     position: relative;
     transition: color 0.2s ease-in-out;
 }
 
-/* Enlaces del header al pasar el raton o activos */
+/* enlaces activos */
 header .nav-link:hover,
 header .nav-link.active {
     color: #ffffff !important; 
 }
 
-/* Efecto linea resplandor en header activo */
+/* linea del enlace activo */
 header .nav-link.active::after {
     content: "";
     position: absolute;
@@ -107,7 +108,7 @@ header .nav-link.active::after {
     display: block;
 }
 
-/* Efecto linea resplandor tenue en header hover */
+/* linea al pasar el raton */
 header .nav-link:hover::after {
     content: "";
     position: absolute;
@@ -121,26 +122,26 @@ header .nav-link:hover::after {
     display: block;
 }
 
-/* Contenedor del submenu de Carta */
-.carta-subnav-container {
+/* menu de categorias */
+.menu-categorias {
     border-bottom: 1px solid #48494a;
 }
 
-/* Enlaces del submenu */
-.subnav-link {
+/* enlaces de categorias */
+.enlace-categoria {
     color: #b5b7b7 !important;
     position: relative;
     transition: color 0.2s ease-in-out;
 }
 
-/* Enlaces del submenu al pasar el raton o activos */
-.subnav-link:hover,
-.subnav-link.active {
+/* categoria activa */
+.enlace-categoria:hover,
+.enlace-categoria.active {
     color: #ffffff !important;
 }
 
-/* Efecto linea resplandor en submenu activo */
-.subnav-link.active::after {
+/* linea de la categoria activa */
+.enlace-categoria.active::after {
     content: "";
     position: absolute;
     bottom: -9px;
@@ -153,8 +154,8 @@ header .nav-link:hover::after {
     display: block;
 }
 
-/* Efecto linea resplandor tenue en submenu hover */
-.subnav-link:hover::after {
+/* linea al pasar el raton */
+.enlace-categoria:hover::after {
     content: "";
     position: absolute;
     bottom: -9px;
@@ -168,59 +169,66 @@ header .nav-link:hover::after {
 }
 
 /* =========================================
-   4. BOTONES
+   5. BOTONES
 ========================================= */
 
-/* Boton principal amarillo */
-.btn-starbites {
-    background-color: var(--amarillo-primario);
-    color: var(--bg-negro);
+/* boton amarillo */
+.boton-amarillo, .boton-comprar {
+    background-color: #FFD914 !important;
+    color: #000000 !important;
     font-weight: bold;
     text-transform: uppercase;
     border-radius: 20px;
-    padding: 0.5rem 1.5rem;
-    border: none;
-    transition: all 0.2s ease-in-out;
-}
-.btn-starbites:hover {
-    background-color: var(--amarillo-secundario);
-    color: var(--bg-negro);
-    transform: scale(1.02);
+    padding: 7px 20px;
+    border: none !important;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
-/* Boton de agregar al carrito (Simbolo +) */
-.btn-add-custom {
-    width: 35px; 
-    height: 35px; 
-    font-size: 1.5rem; 
+/* al pasar el raton */
+.boton-amarillo:hover, .boton-comprar:hover {
+    background-color: #FFE03D !important;
+    color: #000000 !important;
+}
+
+/* al hacer clic */
+.boton-amarillo:active, .boton-comprar:active {
+    background-color: #EECB18 !important;
+    color: #000000 !important;
+}
+
+/* boton redondo de la tarjeta */
+.boton-mas {
+    width: 35px !important;
+    height: 35px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
     line-height: 1;
     text-decoration: none;
 }
 
-/* Boton redondeado leer mas */
-.btn-read-more {
-    border-radius: 50px;
-    padding: 0.6rem 2.5rem;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-}
-
 /* =========================================
-   5. TARJETAS (CARDS)
+   6. TARJETAS
 ========================================= */
 
-/* Tarjeta basica */
-.card-galactica {
+/* tarjeta de categoria */
+.tarjeta-categoria {
     background-color: var(--bg-gris-oscuro);
     border: 1px solid var(--bg-gris-medio);
     border-radius: 12px;
     color: var(--texto-blanco);
     transition: transform 0.2s;
 }
-.card-galactica:hover { border-color: var(--amarillo-primario); }
+.tarjeta-categoria:hover { border-color: var(--amarillo-primario); }
 
-/* Tarjeta tematica Carta */
-.product-card-sw {
+/* tarjeta de producto */
+.tarjeta-producto {
     width: 100%;
     position: relative;
     box-sizing: border-box;
@@ -230,15 +238,15 @@ header .nav-link:hover::after {
     margin-bottom: 20px;
 }
 
-/* Imagen de la tarjeta */
-.product-card-sw .product-thumb {
+/* foto */
+.tarjeta-producto .foto-producto {
     position: relative;
     width: 100%;
     height: 350px;
     overflow: hidden;
     border-radius: 8px 8px 0 0;
 }
-.product-card-sw .product-thumb img {
+.tarjeta-producto .foto-producto img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -246,92 +254,93 @@ header .nav-link:hover::after {
     transition: transform 0.3s ease;
 }
 
-/* Panel de texto oscuro en tarjetas */
-.product-card-sw .product-details {
+/* panel de texto */
+.tarjeta-producto .detalle-producto {
     background-color: #1d1e1f;
-    padding: 16px 14px 26px 14px; 
+    padding: 16px 14px 38px 14px; 
     position: relative;
     box-sizing: border-box;
     color: #b5b7b7;
     flex-grow: 1; 
-    min-height: 155px;
+    min-height: 167px;
     height: auto; 
     display: flex;
     flex-direction: column;
+    border-radius: 0 0 8px 8px;
 }
 
-/* Titulo y precio de tarjeta */
-.product-card-sw .product-title {
+/* titulo y precio */
+.tarjeta-producto .titulo-producto {
     color: #ffffff;
     font-size: 1.6rem; 
     font-weight: 800; 
     line-height: 1.28; 
     margin-bottom: 12px;
 }
-.product-card-sw .product-price {
+.tarjeta-producto .precio-producto {
     color: var(--amarillo-primario);
     font-weight: bold;
     font-size: 1.1rem;
 }
 
-/* Adorno de corte diagonal inferior */
-.product-card-sw .product-details::before {
-    content: "";
-    position: absolute;
-    bottom: -12px;
-    left: 0;
-    width: 45%;
-    border-top: 12px solid #1d1e1f;
-    border-right: 12px solid transparent;
-    z-index: 2;
+/* ocultar el elemento de antes */
+.tarjeta-producto .detalle-producto::before {
+    display: none;
 }
-.product-card-sw .product-details::after {
+
+/* recorte diagonal de abajo */
+.tarjeta-producto .detalle-producto::after {
     content: "";
     display: block;
     position: absolute;
-    bottom: -12px;
-    right: 0;
-    width: 18%;
-    box-sizing: border-box;
-    border-top: 12px solid #1d1e1f;
-    border-left: 12px solid transparent;
+    bottom: 0;
+    right: 18%;
+    width: 37%;
+    height: 12px;
+    background-color: var(--bg-negro);
+    clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 100%, 0 100%);
     z-index: 2;
 }
+
+/* recorte en pantallas grandes */
 @media screen and (min-width: 960px) {
-    .product-card-sw .product-details::after { width: 10%; }
+    .tarjeta-producto .detalle-producto::after { 
+        width: 45%; 
+        right: 10%; 
+    }
 }
 
-/* Efecto decorativo LED inferior */
-.decal-contain { margin-bottom: 8px; }
-.decal-contain .decal { position: relative; display: inline-block; height: 4px; }
-.decal-contain .decal::before {
+/* decoracion de la tarjeta */
+.caja-decoracion { margin-bottom: 8px; }
+.caja-decoracion .decoracion { position: relative; display: inline-block; height: 4px; }
+.caja-decoracion .decoracion::before {
     content: ""; position: absolute; top: 0; left: 0; width: 21px; 
     border-top: 2px solid #5a5c5d; border-bottom: 2px solid #5a5c5d;
     border-radius: 2px; box-shadow: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
-.decal-contain .decal::after {
+.caja-decoracion .decoracion::after {
     content: ""; position: absolute; top: 0; left: 28px; width: 4px; 
     border-top: 2px solid #5a5c5d; border-bottom: 2px solid #5a5c5d;
     border-radius: 2px; box-shadow: none; transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Iluminar LED al pasar el raton */
-.product-card-sw:hover .decal-contain .decal::before,
-.product-card-sw:hover .decal-contain .decal::after {
+/* se ilumina al pasar el raton */
+.tarjeta-producto:hover .caja-decoracion .decoracion::before,
+.tarjeta-producto:hover .caja-decoracion .decoracion::after {
     border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff;
     box-shadow: 0 0 6px 1px #ffffff; 
 }
 
 /* =========================================
-   6. INICIO: PORTADA (HERO)
+   7. PORTADA
 ========================================= */
-.hero-section {
+.portada {
     background-image: url('../img/imagen-home.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
-    /* Ocupar ancho total pantalla */
+    /* ancho completo */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -345,8 +354,8 @@ header .nav-link:hover::after {
     padding-bottom: 5rem;
 }
 
-/* Capa oscura semitransparente fondo */
-.hero-overlay {
+/* capa oscura */
+.capa-oscura {
     position: absolute;
     top: 0;
     left: 0;
@@ -357,16 +366,16 @@ header .nav-link:hover::after {
 }
 
 /* =========================================
-   7. INICIO: NOSOTROS
+   8. NOSOTROS
 ========================================= */
-.nosotros-section {
-    /* Degradado oscuro para integrar texto y foto */
+.seccion-nosotros {
+    /* degradado para unir texto y foto */
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 80%), url('../img/imagen-nosotros.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     
-    /* Ocupar ancho total pantalla */
+    /* ancho completo */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -379,7 +388,7 @@ header .nav-link:hover::after {
     padding-bottom: 4rem;
 }
 
-/* Posicion del logo seccion nosotros */
+/* logo de la seccion */
 .logo-nosotros {
     width: 100%;
     max-width: 400px; 
@@ -388,10 +397,10 @@ header .nav-link:hover::after {
 }
 
 /* =========================================
-   8. INICIO: CONTACTO
+   9. CONTACTO
 ========================================= */
-.contact-section {
-    /* Ocupar ancho total pantalla */
+.seccion-contacto {
+    /* ancho completo */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -405,8 +414,8 @@ header .nav-link:hover::after {
     padding-bottom: 5rem;
 }
 
-/* Imagen de fondo lado derecho */
-.contact-bg-image {
+/* foto de la derecha */
+.fondo-contacto {
     position: absolute;
     top: 0;
     right: 0;
@@ -418,8 +427,8 @@ header .nav-link:hover::after {
     z-index: 0;
 }
 
-/* Transicion de la imagen con el fondo oscuro */
-.contact-bg-image::before {
+/* difuminado de la foto */
+.fondo-contacto::before {
     content: '';
     position: absolute;
     top: 0;
@@ -429,26 +438,26 @@ header .nav-link:hover::after {
     background: linear-gradient(to right, var(--bg-negro) 0%, transparent 100%);
 }
 
-/* Tarjeta del formulario de contacto */
-.contact-card {
+/* caja del formulario */
+.caja-contacto {
     background-color: var(--bg-gris-oscuro); 
     border: none;
     margin-top: 2rem;
     max-width: 950px; 
 }
 
-/* Iconos redes e info de contacto */
-.contact-icon {
+/* iconos de contacto */
+.icono-contacto {
     width: 22px;
     height: auto;
     object-fit: contain;
 }
 
-/* Texto pequeno para utilidades */
-.fs-7 { font-size: 0.85rem; }
+/* texto pequeno */
+.texto-pequeno { font-size: 0.85rem; }
 
-/* Campos de formulario */
-.contact-input {
+/* campos del formulario */
+.campo-contacto {
     background-color: var(--bg-negro) !important;
     border: none !important;
     color: var(--texto-blanco) !important;
@@ -456,8 +465,100 @@ header .nav-link:hover::after {
     padding: 0.8rem 1rem;
 }
 
-/* Resalte de campos al seleccionarlos */
-.contact-input:focus {
+/* resalte al escribir */
+.campo-contacto:focus {
     box-shadow: 0 0 0 2px var(--amarillo-primario) !important;
     outline: none;
+}
+
+/* =========================================
+   10. PRODUCTO
+========================================= */
+
+/* boton de volver */
+.boton-volver {
+    color: var(--texto-blanco) !important;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    transition: opacity 0.2s;
+}
+.boton-volver:hover {
+    opacity: 0.8;
+}
+.circulo-volver {
+    background-color: var(--bg-gris-medio);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+/* etiqueta de categoria */
+.etiqueta-categoria {
+    background-color: var(--amarillo-primario);
+    color: var(--bg-negro);
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+/* titulo y linea */
+.titulo-plato {
+    font-weight: 800;
+    font-size: 2.2rem;
+}
+.linea-plato {
+    border-color: #48494a;
+    margin: 25px 0;
+    opacity: 1;
+}
+
+/* lista de extras */
+.lista-opciones label {
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+.form-check-input {
+    background-color: var(--bg-gris-medio) !important;
+    border: none !important;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    border-radius: 2px !important;
+}
+.form-check-input:checked {
+    background-color: var(--amarillo-primario) !important;
+}
+.form-check-input:focus {
+    box-shadow: none !important;
+}
+
+/* caja de precio y boton */
+.caja-compra {
+    background-color: #1a1b1c;
+    border-radius: 8px;
+    padding: 30px 20px;
+}
+.precio-total {
+    color: var(--amarillo-primario);
+    line-height: 1.1;
+}
+.boton-comprar {
+    background-color: var(--amarillo-primario);
+    color: var(--bg-negro);
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 20px;
+    padding: 7px 22px;
+    border: none;
+    transition: all 0.2s ease-in-out;
 }

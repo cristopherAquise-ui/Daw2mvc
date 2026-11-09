@@ -4,31 +4,26 @@ include_once("models/Ingrediente.php");
 
 class IngredienteDAO
 {
-    /**
-     * Obtiene todos los extras compatibles con un producto concreto.
-     * @param int $producto_id El ID del producto de la carta.
-     * @return array Array de objetos Ingrediente.
-     */
+    // extras que admite un producto
     public static function getExtrasByProducto($producto_id)
     {
-        $con = DataBase::connect();
-        $sql = "SELECT i.* 
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare("SELECT i.* 
                 FROM ingredientes i 
                 INNER JOIN producto_ingrediente pi ON i.id = pi.ingrediente_id 
-                WHERE pi.producto_id = ? AND i.activo = true";
-                
-        $stmt = $con->prepare($sql);
-        $stmt->bind_param("i", $producto_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+                WHERE pi.producto_id = ? AND i.activo = true");
+
+        $consulta->bind_param("i", $producto_id);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
 
         $extras = [];
-        while ($extra = $result->fetch_object("Ingrediente")) {
+        while ($extra = $resultado->fetch_object("Ingrediente")) {
             $extras[] = $extra;
         }
 
-        $stmt->close();
-        $con->close();
+        $consulta->close();
+        $conexion->close();
         
         return $extras;
     }

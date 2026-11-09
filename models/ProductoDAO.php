@@ -4,54 +4,55 @@ include_once("models/Producto.php");
 
 class ProductoDAO
 {
-    // Obtener todos los productos activos
+    // todos los productos activos
     public static function getAll()
     {
-        $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM productos WHERE activo = true");
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare("SELECT * FROM productos WHERE activo = true");
+        $consulta->execute();
+        $resultado = $consulta->get_result();
 
         $productos = [];
-        while ($producto = $result->fetch_object("Producto")) {
+        while ($producto = $resultado->fetch_object("Producto")) {
             $productos[] = $producto;
         }
 
-        $stmt->close();
-        $con->close();
+        $consulta->close();
+        $conexion->close();
         return $productos;
     }
 
-    // Obtener productos filtrados por id de categoría
+    // productos de una categoria
     public static function getByCategoria($categoria_id)
     {
-        $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM productos WHERE categoria_id = ? AND activo = true");
-        $stmt->bind_param("i", $categoria_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare("SELECT * FROM productos WHERE categoria_id = ? AND activo = true");
+        $consulta->bind_param("i", $categoria_id);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
 
         $productos = [];
-        while ($producto = $result->fetch_object("Producto")) {
+        while ($producto = $resultado->fetch_object("Producto")) {
             $productos[] = $producto;
         }
 
-        $stmt->close();
-        $con->close();
+        $consulta->close();
+        $conexion->close();
         return $productos;
     }
-    // Obtener un producto por su ID
+
+    // un producto por su id
     public static function getById($id)
     {
-        $con = DataBase::connect();
-        $stmt = $con->prepare("SELECT * FROM productos WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $producto = $result->fetch_object("Producto");
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare("SELECT * FROM productos WHERE id = ?");
+        $consulta->bind_param("i", $id);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
+        $producto = $resultado->fetch_object("Producto");
         
-        $stmt->close();
-        $con->close();
+        $consulta->close();
+        $conexion->close();
         return $producto;
     }
 }

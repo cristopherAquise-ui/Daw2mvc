@@ -6,7 +6,7 @@ class cartaController
     public function index()
     {
         $productos = ProductoDAO::getAll();   
-        $view = "views/carta.php";
+        $vista = "views/carta.php";
         include_once 'views/main.php';
     }
 }

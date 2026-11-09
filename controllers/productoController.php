@@ -13,7 +13,7 @@ class productoController
             $productos = ProductoDAO::getAll();
         }
 
-        $view = "views/productos/listado.php";
+        $vista = "views/productos/listado.php";
         include_once 'views/main.php';
     }
     public function detalle()
@@ -22,7 +22,7 @@ class productoController
             $id = (int)$_GET['id'];
             $producto = ProductoDAO::getById($id);
             $extras = IngredienteDAO::getExtrasByProducto($id);
-                        $view = "views/productos/detalle.php";
+            $vista = "views/productos/detalle.php";
             include_once 'views/main.php';
         } else {
             header("Location: " . url . "?controller=producto");

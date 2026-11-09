@@ -16,14 +16,14 @@
             <div class="row align-items-center">
                 <div class="col-4 d-none d-md-block"></div>
 
-                <!-- Logo -->
+                <!-- logo -->
                 <div class="col-12 col-md-4 text-center">
                     <a href="?controller=inicio" class="text-decoration-none d-inline-block">
                         <img src="<?= url ?>public/svg/Logo-blanco-SVG.svg" alt="Star Bites Logo">
                     </a>
                 </div>
 
-                <!-- Iconos header -->
+                <!-- iconos -->
                 <div
                     class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end gap-4 mt-3 mt-md-0 align-items-center">
                     <a href="?controller=usuario&action=login" title="Mi Cuenta" class="text-decoration-none">
@@ -32,13 +32,13 @@
                     <a href="#" title="Buscar" class="text-decoration-none">
                         <img src="<?= url ?>public/svg/icono/lupa-svg.svg" alt="Buscar">
                     </a>
-                    <a href="?controller=carrito" class="nav-carrito text-decoration-none position-relative"
+                    <a href="?controller=carrito" class="enlace-carrito text-decoration-none position-relative"
                         title="Carrito">
                         <img src="<?= url ?>public/svg/icono/Carrito-Compra-SVG.svg" alt="Carrito"
                             class="icono-carrito">
-                        <!-- circulo carrito -->
+                        <!-- contador -->
                         <span
-                            class="badge-carrito position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+                            class="contador-carrito position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
                             0
                         </span>
                     </a>
@@ -46,23 +46,22 @@
             </div>
 
             <!-- menu -->
-
             <nav class="row mt-3">
                 <div class="col-12 d-flex justify-content-center gap-4">
                     <?php
-                    // Obtenemos el controlador actual (si no existe, asumimos que es 'inicio')
-                    $controllerActual = isset($_GET['controller']) ? $_GET['controller'] : 'inicio';
+                    // controlador actual, si no hay ninguno es inicio
+                    $controladorActual = isset($_GET['controller']) ? $_GET['controller'] : 'inicio';
                     ?>
 
-                    <a class="nav-link text-uppercase fw-semibold text-light hover-warning <?= ($controllerActual == 'inicio') ? 'active' : '' ?>"
+                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'inicio') ? 'active' : '' ?>"
                         href="?controller=inicio">
                         INICIO
                     </a>
-                    <a class="nav-link text-uppercase fw-semibold text-light hover-warning <?= ($controllerActual == 'carta') ? 'active' : '' ?>"
+                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'carta') ? 'active' : '' ?>"
                         href="?controller=carta">
                         CARTA
                     </a>
-                    <a class="nav-link text-uppercase fw-semibold text-light hover-warning <?= ($controllerActual == 'contacto') ? 'active' : '' ?>"
+                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'contacto') ? 'active' : '' ?>"
                         href="#">
                         CONTACTO
                     </a>
@@ -71,5 +70,5 @@
         </div>
     </header>
 
-    <!-- Contenedor principal -->
+    <!-- contenido -->
     <main class="container my-5 flex-grow-1">

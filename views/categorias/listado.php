@@ -4,7 +4,7 @@
     <?php foreach ($categorias as $categoria) { ?>
         <div class="col">
             <a href="?controller=producto&categoria_id=<?= $categoria->getId() ?>" class="text-decoration-none">
-                <div class="card card-galactica h-100 p-3">
+                <div class="card tarjeta-categoria h-100 p-3">
                     <div class="card-body">
                         <h5 class="card-title text-warning fw-bold"><?= htmlspecialchars($categoria->getNombre(), ENT_QUOTES, 'UTF-8') ?></h5>
                         <p class="card-text text-secondary"><?= htmlspecialchars($categoria->getDescripcion(), ENT_QUOTES, 'UTF-8') ?></p>
