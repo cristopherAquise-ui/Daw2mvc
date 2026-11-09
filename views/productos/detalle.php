@@ -3,7 +3,7 @@
     <!-- volver -->
     <div class="mb-4">
         <a href="<?= url ?>" class="boton-volver">
-            <span class="circulo-volver">&lt;</span>
+            <img src="<?= url ?>public/svg/icono/icono-atras.svg" alt="Volver" class="icono-volver-img me-1">
             Volver a la Carta
         </a>
     </div>
@@ -11,17 +11,17 @@
     <div class="row gx-5">
         <!-- foto -->
         <div class="col-md-6 mb-4 mb-md-0">
-            <img src="<?= url ?>public/img/productos/<?= htmlspecialchars($producto->getImagen(), ENT_QUOTES, 'UTF-8') ?>" 
-                 class="img-fluid rounded-4 w-100" 
-                 alt="<?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?>">
+            <img src="<?= url ?>public/img/productos/<?= htmlspecialchars($producto->getImagen(), ENT_QUOTES, 'UTF-8') ?>"
+                class="img-fluid rounded-4 w-100"
+                alt="<?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?>">
         </div>
 
         <!-- datos -->
         <div class="col-md-6 text-white d-flex flex-column">
-            
+
             <!-- categoria y titulo -->
             <div>
-                <span class="etiqueta-categoria">Entrantes</span>
+                <span class="etiqueta-categoria"><?= htmlspecialchars($categoria->getNombre(), ENT_QUOTES, 'UTF-8') ?></span>
                 <h2 class="titulo-plato mt-3"><?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?></h2>
                 <p class="mt-2 fs-6 text-light"><?= htmlspecialchars($producto->getDescripcion(), ENT_QUOTES, 'UTF-8') ?></p>
             </div>
@@ -31,7 +31,7 @@
             <!-- formulario -->
             <form action="<?= url ?>?controller=carrito&action=add" method="POST" class="d-flex flex-column flex-grow-1">
                 <input type="hidden" name="producto_id" value="<?= $producto->getId() ?>">
-                
+
                 <!-- extras -->
                 <?php if (!empty($extras)) { ?>
                     <h4 class="mb-4 fw-bold">Personaliza tu plato</h4>
@@ -42,7 +42,7 @@
                                     <input class="form-check-input me-3" type="checkbox" name="extras[]" value="<?= $extra->getId() ?>" id="extra_<?= $extra->getId() ?>">
                                     <span class="fw-bold flex-grow-1"><?= htmlspecialchars($extra->getNombre(), ENT_QUOTES, 'UTF-8') ?></span>
                                     <span class="text-secondary text-end texto-pequeno">
-                                        <?php if((float)$extra->getPrecioExtra() == 0): ?>
+                                        <?php if ((float)$extra->getPrecioExtra() == 0): ?>
                                             Gratis
                                         <?php else: ?>
                                             +€<?= number_format((float)$extra->getPrecioExtra(), 2, '.', '') ?>

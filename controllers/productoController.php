@@ -1,6 +1,7 @@
 <?php
 include_once("models/ProductoDAO.php");
 include_once("models/IngredienteDAO.php");
+include_once("models/CategoriaDAO.php");
 
 class productoController
 {
@@ -22,6 +23,8 @@ class productoController
             $id = (int)$_GET['id'];
             $producto = ProductoDAO::getById($id);
             $extras = IngredienteDAO::getExtrasByProducto($id);
+            $categoria = CategoriaDAO::getById($producto->getCategoriaId()); 
+
             $vista = "views/productos/detalle.php";
             include_once 'views/main.php';
         } else {

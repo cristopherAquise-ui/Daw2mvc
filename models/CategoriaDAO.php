@@ -22,4 +22,18 @@ class CategoriaDAO
 
         return $categorias;
     }
+    public static function getById($id)
+    {
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare("SELECT * FROM categorias WHERE id = ?");
+        $consulta->bind_param("i", $id);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
+        $categoria = $resultado->fetch_object("Categoria");
+
+        $consulta->close();
+        $conexion->close();
+
+        return $categoria;
+    }
 }

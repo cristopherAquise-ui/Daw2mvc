@@ -562,3 +562,10 @@ header .nav-link:hover::after {
     border: none;
     transition: all 0.2s ease-in-out;
 }
+/* Boton atras de detalles*/
+/* ICONO SVG VOLVER */
+.icono-volver-img {
+    width: 55px;
+    height: 55px;
+    vertical-align: middle;
+}
