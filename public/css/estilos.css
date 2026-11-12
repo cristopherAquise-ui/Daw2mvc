@@ -370,7 +370,7 @@ header .nav-link:hover::after {
 ========================================= */
 .seccion-nosotros {
     /* degradado para unir texto y foto */
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 80%), url('../img/imagen-nosotros.jpg'); 
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0) 80%), url('../img/imagen-nosotros.webp'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -562,10 +562,25 @@ header .nav-link:hover::after {
     border: none;
     transition: all 0.2s ease-in-out;
 }
-/* Boton atras de detalles*/
+/*------ORDENAR LUEGO--------------------------------*/
 /* ICONO SVG VOLVER */
 .icono-volver-img {
     width: 55px;
     height: 55px;
     vertical-align: middle;
+}
+
+.icono-header {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icono-header:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
 }
