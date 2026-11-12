@@ -360,3 +360,5 @@ INSERT INTO `pedido_detalle_ingrediente` VALUES (1,1,2,'Caviar Oscietra',6.5,2,'
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- Fin del script
+UPDATE categorias SET nombre = 'Entrantes' WHERE id = 1;
+UPDATE categorias SET nombre = 'Guarniciones' WHERE id = 4;
