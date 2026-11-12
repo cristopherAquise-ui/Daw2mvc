@@ -96,7 +96,7 @@
 </section>
 
 <!-- contacto -->
-<section class="seccion-contacto position-relative py-5 mt-5">
+<section id="contacto" class="seccion-contacto position-relative py-5 mt-5">
     <div class="fondo-contacto"></div>
 
     <div class="container position-relative z-1">

@@ -68,7 +68,7 @@
                         CARTA
                     </a>
                     <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'contacto') ? 'active' : '' ?>"
-                        href="#">
+                        href="?inicioController=#contacto">
                         CONTACTO
                     </a>
                 </div>

@@ -16,7 +16,6 @@
                 alt="<?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?>">
         </div>
 
-        <!-- datos -->
         <div class="col-md-6 text-white d-flex flex-column">
 
             <!-- categoria y titulo -->
@@ -28,7 +27,7 @@
 
             <hr class="linea-plato">
 
-            <!-- formulario -->
+            <!-- form -->
             <form action="<?= url ?>?controller=carrito&action=add" method="POST" class="d-flex flex-column flex-grow-1">
                 <input type="hidden" name="producto_id" value="<?= $producto->getId() ?>">
 
@@ -39,7 +38,12 @@
                         <?php foreach ($extras as $extra) { ?>
                             <div class="d-flex justify-content-between mb-3 align-items-center">
                                 <label class="d-flex align-items-center mb-0 w-100" style="cursor:pointer;" for="extra_<?= $extra->getId() ?>">
-                                    <input class="form-check-input me-3" type="checkbox" name="extras[]" value="<?= $extra->getId() ?>" id="extra_<?= $extra->getId() ?>">
+                                    <input class="form-check-input me-3 checkbox-extra"
+                                        type="checkbox"
+                                        name="extras[]"
+                                        value="<?= $extra->getId() ?>"
+                                        id="extra_<?= $extra->getId() ?>"
+                                        data-precio="<?= (float)$extra->getPrecioExtra() ?>">
                                     <span class="fw-bold flex-grow-1"><?= htmlspecialchars($extra->getNombre(), ENT_QUOTES, 'UTF-8') ?></span>
                                     <span class="text-secondary text-end texto-pequeno">
                                         <?php if ((float)$extra->getPrecioExtra() == 0): ?>
@@ -60,7 +64,7 @@
                 <div class="caja-compra mt-4 d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
                     <div class="d-flex flex-column text-center text-sm-start w-100">
                         <small class="text-uppercase text-white fw-bold texto-pequeno">PRECIO TOTAL</small>
-                        <span class="precio-total fw-bold fs-3">€<?= number_format((float)$producto->getPrecio(), 2, '.', '') ?></span>
+                        <span id="precio-total-display" class="precio-total fw-bold fs-3">€<?= number_format((float)$producto->getPrecio(), 2, '.', '') ?></span>
                     </div>
                     <button type="submit" class="btn boton-comprar text-nowrap">AÑADIR AL CARRITO</button>
                 </div>
@@ -69,3 +73,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const precioBase = <?= (float)$producto->getPrecio() ?>;
+        const checkboxes = document.querySelectorAll('.checkbox-extra');
+        const displayTotal = document.getElementById('precio-total-display');
+
+        function actualizarTotal() {
+            let total = precioBase;
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    total += parseFloat(cb.dataset.precio) || 0;
+                }
+            });
+            displayTotal.textContent = '€' + total.toFixed(2);
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', actualizarTotal);
+        });
+    });
+</script>
