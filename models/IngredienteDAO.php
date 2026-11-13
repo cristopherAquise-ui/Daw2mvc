@@ -24,7 +24,21 @@ class IngredienteDAO
 
         $consulta->close();
         $conexion->close();
-        
+
         return $extras;
+    }
+    public static function getById($id)
+    {
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare("SELECT * FROM ingredientes WHERE id = ?");
+        $consulta->bind_param("i", $id);
+        $consulta->execute();
+        $resultado = $consulta->get_result();
+        $ingrediente = $resultado->fetch_object("Ingrediente");
+
+        $consulta->close();
+        $conexion->close();
+
+        return $ingrediente;
     }
 }
