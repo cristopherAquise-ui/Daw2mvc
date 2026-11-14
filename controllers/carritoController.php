@@ -15,18 +15,20 @@ class carritoController
         include_once 'views/main.php';
     }
 
-    public function add()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['producto_id'])) {
-            $producto_id = (int)$_POST['producto_id'];
-            $extras = isset($_POST['extras']) && is_array($_POST['extras']) ? $_POST['extras'] : [];
-
-            CarritoDAO::agregarProducto($producto_id, $extras);
-        }
-
-        header("Location: " . url . "?controller=carrito");
-        exit;
+  public function add()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['producto_id'])) {
+        $producto_id = (int)$_POST['producto_id'];
+        $extras = isset($_POST['extras']) && is_array($_POST['extras']) ? $_POST['extras'] : [];
+        CarritoDAO::agregarProducto($producto_id, $extras);
+        $_SESSION['mensaje_carrito'] = "Plato añadido al carrito correctamente.";
     }
+
+    // Regresa a la página anterior (detalle del producto o carta)
+    $paginaAnterior = !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : url . "?controller=carta";
+    header("Location: " . $paginaAnterior);
+    exit;
+}
 
     public function cantidad()
     {

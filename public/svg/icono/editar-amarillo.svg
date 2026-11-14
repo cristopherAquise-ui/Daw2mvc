@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="Editar producto">
+  <title>Editar producto</title>
+  <defs>
+    <filter id="brillo" filterUnits="userSpaceOnUse" x="-6" y="4" width="26" height="16">
+      <feGaussianBlur stdDeviation="0.9"/>
+    </filter>
+  </defs>
+  <g transform="rotate(-45 12 12)">
+    <g class="hoja">
+      <path d="M14 10.3 L2.6 10.3 L-0.2 12 L2.6 13.7 L14 13.7 Z" fill="#ffd21f" filter="url(#brillo)"/>
+      <path d="M14 10.9 L2.8 10.9 L0.6 12 L2.8 13.1 L14 13.1 Z" fill="#ffd21f"/>
+      <path d="M14 11.45 L3.2 11.45 L1.6 12 L3.2 12.55 L14 12.55 Z" fill="#fff7d6"/>
+    </g>
+    <g class="empunadura">
+      <rect x="13.6" y="9.8" width="2" height="4.4" rx="0.4" fill="#c9ccd2"/>
+      <rect x="15.6" y="10.4" width="6.6" height="3.2" rx="0.4" fill="#5d636d"/>
+      <rect x="16.8" y="10.4" width="0.6" height="3.2" fill="#2b2f36"/>
+      <rect x="18.2" y="10.4" width="0.6" height="3.2" fill="#2b2f36"/>
+      <rect x="19.6" y="10.4" width="0.6" height="3.2" fill="#2b2f36"/>
+      <rect x="22.2" y="10" width="1.8" height="4" rx="0.6" fill="#9aa0a9"/>
+    </g>
+  </g>
+</svg>

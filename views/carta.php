@@ -46,7 +46,7 @@ $listaCategorias = [
 
 foreach ($listaCategorias as $clave => $datosCategoria):
     if ($categoriaActual == 'todos' || $categoriaActual == $clave):
-        ?>
+?>
         <h2 class="fw-bold mt-5 mb-4"><?= $datosCategoria['titulo'] ?></h2>
 
         <!-- platos -->
@@ -56,7 +56,7 @@ foreach ($listaCategorias as $clave => $datosCategoria):
 
                 // compara el id del producto con el de la categoria
                 if ($producto->getCategoriaId() == $datosCategoria['id']):
-                    ?>
+            ?>
                     <div class="col">
                         <div class="tarjeta-producto h-100">
 
@@ -78,22 +78,36 @@ foreach ($listaCategorias as $clave => $datosCategoria):
                                 <div class="d-flex justify-content-between align-items-center mt-auto pt-2">
                                     <span class="precio-producto fw-bold"><?= number_format((float) $producto->getPrecio(), 2, ',', '.') ?>
                                         €</span>
-                                    <a href="<?= url ?>?controller=producto&action=detalle&id=<?= $producto->getId() ?>"
-                                        class="btn boton-amarillo rounded-circle p-0 d-inline-flex align-items-center justify-content-center boton-mas">
-                                        +
-                                    </a>
+                                    <div class="d-inline-flex align-items-center gap-2">
+                                        <!-- Botón 1: Ver detalle y extras -->
+                                        <a href="<?= url ?>?controller=producto&action=detalle&id=<?= $producto->getId() ?>"
+                                            class="btn boton-amarillo rounded-circle p-0 d-inline-flex align-items-center justify-content-center boton-mas"
+                                            title="Ver detalle">
+                                            <img src="<?= url ?>public/svg/icono/editar-negro.svg" alt="Ver detalle" class="boton-editar">
+                                        </a>
+
+                                        <!-- Botón 2: Añadir directamente al carrito -->
+                                        <form action="<?= url ?>?controller=carrito&action=add" method="POST" class="d-inline m-0">
+                                            <input type="hidden" name="producto_id" value="<?= $producto->getId() ?>">
+                                            <button type="submit"
+                                                class="btn boton-amarillo rounded-circle p-0 d-inline-flex align-items-center justify-content-center boton-mas"
+                                                title="Añadir al carrito">
+                                                +
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                <?php
+            <?php
                 endif;
             endforeach;
             ?>
         </div>
 
-        <?php
+<?php
     endif;
 endforeach;
 ?>

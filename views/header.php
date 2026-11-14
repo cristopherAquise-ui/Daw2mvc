@@ -44,8 +44,9 @@
                     </a>
                     <a href="?controller=carrito" class="enlace-carrito text-decoration-none position-relative" title="Carrito">
                         <img src="<?= url ?>public/svg/icono/Carrito-Compra-SVG.svg" alt="Carrito" class="icono-carrito icono-header">
+                        <?php include_once("models/CarritoDAO.php"); ?>
                         <span class="contador-carrito position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
-                            0
+                            <?= CarritoDAO::contarItems() ?>
                         </span>
                     </a>
                 </div>

@@ -585,3 +585,9 @@ header .nav-link:hover::after {
     opacity: 0.85;
 }
 
+.boton-editar{
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+

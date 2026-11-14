@@ -1,6 +1,6 @@
 <!-- detalle del producto -->
 <div class="container mt-4 mb-5">
-    <!-- volver -->
+    <!-- boton atras -->
     <div class="mb-4">
         <a href="<?= url ?>" class="boton-volver">
             <img src="<?= url ?>public/svg/icono/icono-atras.svg" alt="Volver" class="icono-volver-img me-1">
