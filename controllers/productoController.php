@@ -31,4 +31,14 @@ class productoController
             header("Location: " . url . "?controller=producto");
         }
     }
+    public function api(){
+        $metodo=$_SERVER['REQUEST_METHOD'];
+        if($metodo=="GET"){
+            $productos = ProductoDAO::getAllJson();
+            echo json_encode($productos);
+        }else if($metodo=="POST"){
+
+        }
+        echo json_encode($metodo);
+    }
 }

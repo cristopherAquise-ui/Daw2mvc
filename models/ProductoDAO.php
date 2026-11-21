@@ -55,4 +55,21 @@ class ProductoDAO
         $conexion->close();
         return $producto;
     }
+    public static function getAllJson()
+    {
+        $conexion = DataBase::connect();
+        $consulta = $conexion->prepare("SELECT * FROM productos WHERE activo = true");
+        $consulta->execute();
+        $resultado = $consulta->get_result();
+
+        $productos = [];
+        while ($producto = $resultado->fetch_assoc()) {
+            $productos[] = $producto;
+        }
+
+        $consulta->close();
+        $conexion->close();
+        return $productos;
+    }
+
 }

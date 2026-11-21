@@ -591,3 +591,82 @@ header .nav-link:hover::after {
     object-fit: contain;
 }
 
+
+/* === VISTA CARRITO === */
+.tarjeta-carrito {
+    background-color: #212121;
+    border-radius: 16px;
+    padding: 18px 24px;
+}
+
+.img-carrito {
+    width: 135px;
+    height: 88px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.precio-carrito {
+    color: #f6d645;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.cantidad-carrito {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.btn-papelera {
+    color: #f6d645;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-papelera:hover {
+    color: #ffe46b;
+}
+
+.enlace-mas-productos {
+    color: #f6d645;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.enlace-mas-productos:hover {
+    color: #ffe46b;
+    text-decoration: underline;
+}
+
+/* Resumen lateral */
+.linea-resumen {
+    border-color: #383838;
+    opacity: 1;
+}
+
+.btn-proceder-pago {
+    background-color: #f6d645;
+    color: #111111;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 12px 34px;
+    border-radius: 50px;
+    border: none;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-proceder-pago:hover {
+    background-color: #ffe46b;
+    color: #000000;
+    transform: translateY(-1px);
+}
