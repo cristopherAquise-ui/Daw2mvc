@@ -1,44 +1,39 @@
 <?php
-include_once("models/ProductoDAO.php");
-include_once("models/IngredienteDAO.php");
-include_once("models/CategoriaDAO.php");
+require_once __DIR__ . '/../dao/ProductoDAO.php';
+require_once __DIR__ . '/../dao/IngredienteDAO.php';
+require_once __DIR__ . '/../dao/CategoriaDAO.php';
+require_once __DIR__ . '/../dao/OfertaDAO.php';
 
-class productoController
+class ProductoController
 {
     public function index()
     {
-        if (isset($_GET['categoria_id']) && !empty($_GET['categoria_id'])) {
-            $categoria_id = (int)$_GET['categoria_id'];
-            $productos = ProductoDAO::getByCategoria($categoria_id);
+        if (isset($_GET['categoria_id']) && $_GET['categoria_id'] !== '') {
+            $productos = ProductoDAO::getByCategoria((int) $_GET['categoria_id']);
         } else {
             $productos = ProductoDAO::getAll();
         }
 
-        $vista = "views/productos/listado.php";
-        include_once 'views/main.php';
+        $vista = __DIR__ . '/../views/productos/listado.php';
+        include __DIR__ . '/../views/main.php';
     }
+
     public function detalle()
     {
-        if (isset($_GET['id'])) {
-            $id = (int)$_GET['id'];
-            $producto = ProductoDAO::getById($id);
-            $extras = IngredienteDAO::getExtrasByProducto($id);
-            $categoria = CategoriaDAO::getById($producto->getCategoriaId()); 
+        $id       = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+        $producto = $id > 0 ? ProductoDAO::getById($id) : null;
 
-            $vista = "views/productos/detalle.php";
-            include_once 'views/main.php';
-        } else {
-            header("Location: " . url . "?controller=producto");
+        if (!$producto) {
+            header('Location: ' . url . '?controller=carta');
+            exit;
         }
-    }
-    public function api(){
-        $metodo=$_SERVER['REQUEST_METHOD'];
-        if($metodo=="GET"){
-            $productos = ProductoDAO::getAllJson();
-            echo json_encode($productos);
-        }else if($metodo=="POST"){
 
-        }
-        echo json_encode($metodo);
+        $base      = IngredienteDAO::getBaseByProducto($id);
+        $extras    = IngredienteDAO::getExtrasByProducto($id);
+        $categoria = CategoriaDAO::getById($producto->getCategoriaId());
+        $ofertas   = OfertaDAO::getActivasPorProducto($id);
+
+        $vista = __DIR__ . '/../views/productos/detalle.php';
+        include __DIR__ . '/../views/main.php';
     }
 }

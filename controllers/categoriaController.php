@@ -1,12 +1,13 @@
 <?php
-include_once("models/CategoriaDAO.php");
+require_once __DIR__ . '/../dao/CategoriaDAO.php';
 
-class categoriaController
+class CategoriaController
 {
     public function index()
     {
-        $categorias = CategoriaDAO::getAll();
-        $vista = "views/categorias/listado.php";
-        include_once 'views/main.php';
+        $categorias = CategoriaDAO::getActivas();
+
+        $vista = __DIR__ . '/../views/categorias/listado.php';
+        include __DIR__ . '/../views/main.php';
     }
 }
