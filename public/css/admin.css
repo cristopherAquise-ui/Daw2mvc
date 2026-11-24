@@ -1,0 +1,103 @@
+/* =========================================
+   PANEL DE ADMINISTRACIÓN
+========================================= */
+
+.admin-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #333333;
+}
+
+.admin-tab {
+    background-color: transparent;
+    border: 1px solid #444444;
+    border-radius: 999px;
+    color: #b5b7b7;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.admin-tab:hover {
+    border-color: var(--amarillo-primario);
+    color: var(--amarillo-primario);
+}
+
+.admin-tab.activo {
+    background-color: var(--amarillo-primario);
+    border-color: var(--amarillo-primario);
+    color: #000000;
+}
+
+.admin-kpi {
+    background-color: #1d1e1f;
+    border: 1px solid #333333;
+    border-left: 4px solid var(--amarillo-primario);
+    border-radius: 12px;
+    padding: 1rem 1.15rem;
+    height: 100%;
+}
+
+.admin-kpi--secundario {
+    border-left-color: #6ee7b7;
+}
+
+.admin-kpi__label {
+    display: block;
+    color: #9a9c9c;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.35rem;
+}
+
+.admin-kpi__valor {
+    color: #ffffff;
+    font-size: 1.65rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.admin-tabla select {
+    background-color: #000000;
+    border: 1px solid #444444;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 0.25rem 0.4rem;
+    font-size: 0.8rem;
+}
+
+.admin-tabla select:focus {
+    outline: none;
+    border-color: var(--amarillo-primario);
+}
+
+.admin-vista h2,
+.admin-vista h3 {
+    letter-spacing: -0.01em;
+}
+
+#panel-pedido-detalle .pedido-linea {
+    align-items: flex-start;
+}
+
+@media (max-width: 575px) {
+    .admin-tabs {
+        gap: 0.35rem;
+    }
+
+    .admin-tab {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.72rem;
+    }
+
+    .admin-kpi__valor {
+        font-size: 1.3rem;
+    }
+}

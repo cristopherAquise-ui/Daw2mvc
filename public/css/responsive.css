@@ -1,0 +1,94 @@
+/* =========================================
+     RESPONSIVE
+========================================= */
+
+@media (max-width: 767px) {
+    header.sticky-top {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .menu-categorias {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        gap: 1rem !important;
+        padding-bottom: 0.75rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .menu-categorias .enlace-categoria {
+        white-space: nowrap;
+        flex: 0 0 auto;
+    }
+
+    .tarjeta-producto .titulo-producto {
+        font-size: 1.35rem;
+    }
+
+    .tarjeta-carrito {
+        padding: 14px 16px;
+    }
+
+    .img-carrito {
+        width: 92px;
+        height: 68px;
+    }
+
+    .pasos {
+        gap: 0.45rem;
+    }
+
+    .paso {
+        font-size: 0.72rem;
+    }
+
+    .paso__numero {
+        width: 22px;
+        height: 22px;
+        font-size: 0.7rem;
+    }
+
+    .oferta-card,
+    .tarjeta-formulario,
+    .tarjeta-resumen,
+    .tarjeta-panel,
+    .pedido-caja {
+        padding: 1.1rem;
+    }
+}
+
+@media (max-width: 430px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    .portada h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .pagina-titulo {
+        font-size: 1.8rem;
+    }
+
+    .tarjeta-producto .titulo-producto {
+        font-size: 1.2rem;
+    }
+
+    .precio-total {
+        font-size: 1.6rem;
+    }
+
+    .caja-compra {
+        gap: 1rem;
+    }
+
+    .boton-comprar,
+    .boton-amarillo {
+        width: 100%;
+    }
+
+    .admin-tabla {
+        font-size: 0.8rem;
+    }
+}
