@@ -1,8 +1,8 @@
 <?php
-if (!isset($_SESSION['carrito'])) {
-    $_SESSION['carrito'] = [];
-}
-include_once 'views/header.php';
-include_once $vista;
-include_once 'views/footer.php';
-?>
+/**
+ * Layout principal.
+ * Espera la ruta de la vista en $vista.
+ */
+include __DIR__ . '/header.php';
+include $vista;
+include __DIR__ . '/footer.php';

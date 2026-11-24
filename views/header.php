@@ -1,3 +1,14 @@
+<?php
+require_once __DIR__ . '/../dao/CarritoDAO.php';
+
+$usuarioSesion     = $_SESSION['usuario'] ?? null;
+$controladorActual = $_GET['controller'] ?? default_controller;
+$contadorCarrito   = CarritoDAO::contarItems();
+$aviso             = $_SESSION['aviso'] ?? null;
+
+// El aviso se muestra una sola vez.
+unset($_SESSION['aviso']);
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,6 +19,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= url ?>public/css/estilos.css">
+    <link rel="stylesheet" href="<?= url ?>public/css/nuevas-vistas.css">
+    <link rel="stylesheet" href="<?= url ?>public/css/admin.css">
+    <link rel="stylesheet" href="<?= url ?>public/css/responsive.css">
 </head>
 
 <body class="bg-black text-light min-vh-100 d-flex flex-column">
@@ -29,24 +43,24 @@
 
                 <!-- LOGO CENTRO -->
                 <div class="col-12 col-md-4 text-center order-1 order-md-2">
-                    <a href="?controller=inicio" class="text-decoration-none d-inline-block">
+                    <a href="<?= url ?>?controller=inicio" class="text-decoration-none d-inline-block">
                         <img src="<?= url ?>public/svg/Logo-blanco-SVG.svg" alt="Star Bites Logo">
                     </a>
                 </div>
 
                 <!-- ICONOS DERECHA -->
                 <div class="col-6 col-md-4 d-flex justify-content-end gap-4 align-items-center order-3 order-md-3 mt-3 mt-md-0">
-                    <a href="?controller=usuario&action=login" title="Mi Cuenta" class="text-decoration-none">
+                    <a href="<?= url ?>?controller=usuario&action=<?= $usuarioSesion ? 'panel' : 'login' ?>"
+                        title="<?= $usuarioSesion ? 'Mi cuenta' : 'Iniciar sesión' ?>" class="text-decoration-none">
                         <img src="<?= url ?>public/svg/icono/usuario-svg.svg" alt="Usuario" class="icono-header">
                     </a>
-                    <a href="#" title="Buscar" class="text-decoration-none">
+                    <a href="<?= url ?>?controller=carta" title="Buscar en la carta" class="text-decoration-none">
                         <img src="<?= url ?>public/svg/icono/lupa-svg.svg" alt="Buscar" class="icono-header">
                     </a>
-                    <a href="?controller=carrito" class="enlace-carrito text-decoration-none position-relative" title="Carrito">
+                    <a href="<?= url ?>?controller=carrito" class="enlace-carrito text-decoration-none position-relative" title="Carrito">
                         <img src="<?= url ?>public/svg/icono/Carrito-Compra-SVG.svg" alt="Carrito" class="icono-carrito icono-header">
-                        <?php include_once("models/CarritoDAO.php"); ?>
                         <span class="contador-carrito position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
-                            <?= CarritoDAO::contarItems() ?>
+                            <?= (int) $contadorCarrito ?>
                         </span>
                     </a>
                 </div>
@@ -54,24 +68,39 @@
 
             <!-- menu -->
             <nav class="row mt-3">
-                <div class="col-12 d-flex justify-content-center gap-4">
-                    <?php
-                    // controlador actual, si no hay ninguno es inicio
-                    $controladorActual = isset($_GET['controller']) ? $_GET['controller'] : 'inicio';
-                    ?>
-
+                <div class="col-12 d-flex flex-wrap justify-content-center gap-4">
                     <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'inicio') ? 'active' : '' ?>"
-                        href="?controller=inicio">
+                        href="<?= url ?>?controller=inicio">
                         INICIO
                     </a>
-                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'carta') ? 'active' : '' ?>"
-                        href="?controller=carta">
+                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'carta' || $controladorActual == 'producto') ? 'active' : '' ?>"
+                        href="<?= url ?>?controller=carta">
                         CARTA
                     </a>
-                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'contacto') ? 'active' : '' ?>"
-                        href="?inicioController=#contacto">
+                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'oferta') ? 'active' : '' ?>"
+                        href="<?= url ?>?controller=oferta">
+                        OFERTAS
+                    </a>
+                    <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo"
+                        href="<?= url ?>?controller=inicio#contacto">
                         CONTACTO
                     </a>
+                    <?php if ($usuarioSesion): ?>
+                        <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'usuario') ? 'active' : '' ?>"
+                            href="<?= url ?>?controller=usuario&action=panel">
+                            MI CUENTA
+                        </a>
+                        <?php if ($usuarioSesion['rol'] === 'admin'): ?>
+                            <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo <?= ($controladorActual == 'admin') ? 'active' : '' ?>"
+                                href="<?= url ?>?controller=admin">
+                                ADMIN
+                            </a>
+                        <?php endif; ?>
+                        <a class="nav-link text-uppercase fw-semibold text-light brillo-amarillo"
+                            href="<?= url ?>?controller=usuario&action=logout">
+                            SALIR
+                        </a>
+                    <?php endif; ?>
                 </div>
             </nav>
         </div>
@@ -79,3 +108,9 @@
 
     <!-- contenido -->
     <main class="container my-5 flex-grow-1">
+        <?php if (!empty($aviso)): ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="status">
+                <?= texto($aviso) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        <?php endif; ?>

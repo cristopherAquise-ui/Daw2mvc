@@ -9,7 +9,7 @@
                 Bienvenido al lado oscuro <br>
                 Donde la comida es de otro planeta
             </h1>
-            <a href="<?= url ?>?controller=categoria" class="boton-amarillo mt-3">RESERVAS</a>
+            <a href="<?= url ?>?controller=carta" class="boton-amarillo mt-3">VER LA CARTA</a>
         </div>
     </div>
 </section>
@@ -20,48 +20,48 @@
         <h2 class="fw-bold text-white fs-3 mb-0">Productos Populares</h2>
     </div>
     <div class="row gx-5 justify-content-center">
-        <?php if (!empty($productos)): ?>
-            <?php foreach (array_slice($productos, 0, 2) as $producto): ?>
+        <?php if (!empty($destacados)): ?>
+            <?php foreach ($destacados as $producto): ?>
             <div class="col-12 col-md-6">
-                <div class="tarjeta-producto">
-                    <div class="foto-producto">
-                        <img src="<?= url ?>public/img/productos/<?= htmlspecialchars($producto->getImagen(), ENT_QUOTES, 'UTF-8') ?>" 
-                             alt="<?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?>">
+                <a href="<?= url ?>?controller=producto&action=detalle&id=<?= (int) $producto->getId() ?>"
+                   class="text-decoration-none">
+                    <div class="tarjeta-producto">
+                        <div class="foto-producto">
+                            <img src="<?= url ?>public/img/productos/<?= texto($producto->getImagen()) ?>"
+                                 alt="<?= texto($producto->getNombre()) ?>">
+                        </div>
+                        <div class="detalle-producto">
+                            <h3 class="titulo-producto h5"><?= texto($producto->getNombre()) ?></h3>
+                            <span class="precio-producto fw-bold"><?= precio($producto->getPrecio()) ?></span>
+                        </div>
                     </div>
-                    <div class="detalle-producto">
-                        <h5 class="titulo-producto"><?= htmlspecialchars($producto->getNombre(), ENT_QUOTES, 'UTF-8') ?></h5>
-                    </div>
-                </div>
+                </a>
             </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <div class="col-12 col-md-5">
-                <div class="tarjeta-producto">
-                    <div class="foto-producto">
-                        <img src="<?= url ?>public/img/productos/segundos/carre_cordero_eclipse.jpg" alt="Confit Estelar de Pato">
+            <?php foreach (array_slice($productos, 0, 2) as $producto): ?>
+            <div class="col-12 col-md-6">
+                <a href="<?= url ?>?controller=producto&action=detalle&id=<?= (int) $producto->getId() ?>"
+                   class="text-decoration-none">
+                    <div class="tarjeta-producto">
+                        <div class="foto-producto">
+                            <img src="<?= url ?>public/img/productos/<?= texto($producto->getImagen()) ?>"
+                                 alt="<?= texto($producto->getNombre()) ?>">
+                        </div>
+                        <div class="detalle-producto">
+                            <h3 class="titulo-producto h5"><?= texto($producto->getNombre()) ?></h3>
+                            <span class="precio-producto fw-bold"><?= precio($producto->getPrecio()) ?></span>
+                        </div>
                     </div>
-                    <div class="detalle-producto">
-                        <h5 class="titulo-producto">Confit Estelar de Pato y Cerezas Negras.</h5>
-                    </div>
-                </div>
+                </a>
             </div>
-            
-            <div class="col-12 col-md-5">
-                <div class="tarjeta-producto">
-                    <div class="foto-producto">
-                        <img src="<?= url ?>public/img/productos/segundos/carre_cordero_eclipse.jpg" alt="Esfera Sideral de Wagyu">
-                    </div>
-                    <div class="detalle-producto">
-                        <h5 class="titulo-producto">Esfera Sideral de Wagyu, Trufa Negra y Foie Gras.</h5>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         <?php endif; ?>
     </div>
 
     <!-- boton ver mas -->
     <div class="text-center mt-5">
-        <a href="<?= url ?>?controller=categoria" class="boton-amarillo boton-ver-mas">READ MORE</a>
+        <a href="<?= url ?>?controller=carta" class="boton-amarillo boton-ver-mas">VER TODA LA CARTA</a>
     </div>
 </section>
 

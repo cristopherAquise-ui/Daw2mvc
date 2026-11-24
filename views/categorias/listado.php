@@ -1,16 +1,22 @@
-<h1 class="text-warning mb-4">Nuestras Categorías</h1>
+<div class="container my-5">
+    <div class="pagina-cabecera">
+        <span class="etiqueta-categoria">CARTA</span>
+        <h1 class="pagina-titulo h2 mt-2 mb-1">Categorías</h1>
+        <p class="pagina-subtitulo">Elige una categoría para ver sus platos.</p>
+    </div>
 
-<div class="row row-cols-1 row-cols-md-2 g-4">
-    <?php foreach ($categorias as $categoria) { ?>
-        <div class="col">
-            <a href="?controller=producto&categoria_id=<?= $categoria->getId() ?>" class="text-decoration-none">
-                <div class="card tarjeta-categoria h-100 p-3">
-                    <div class="card-body">
-                        <h5 class="card-title text-warning fw-bold"><?= htmlspecialchars($categoria->getNombre(), ENT_QUOTES, 'UTF-8') ?></h5>
-                        <p class="card-text text-secondary"><?= htmlspecialchars($categoria->getDescripcion(), ENT_QUOTES, 'UTF-8') ?></p>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+        <?php foreach ($categorias as $categoria): ?>
+            <div class="col">
+                <a href="<?= url ?>?controller=carta&categoria=<?= (int) $categoria->getId() ?>"
+                   class="text-decoration-none">
+                    <div class="tarjeta-panel h-100">
+                        <h2 class="h5 text-white mb-2"><?= texto($categoria->getNombre()) ?></h2>
+                        <p class="text-secondary mb-3"><?= texto($categoria->getDescripcion()) ?></p>
+                        <span class="enlace-amarillo">Ver productos →</span>
                     </div>
-                </div>
-            </a>
-        </div>
-    <?php } ?>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
 </div>
