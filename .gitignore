@@ -1,0 +1,22 @@
+# Configuración local con credenciales (no se sube a Git)
+config/local.php
+
+# Variables de entorno
+.env
+
+# Logs
+*.log
+
+# Dependencias (el proyecto no usa Composer, pero por si acaso)
+/vendor/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# Archivos temporales
+/tmp/
