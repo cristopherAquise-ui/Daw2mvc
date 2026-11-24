@@ -1,47 +1,63 @@
 <?php
 include_once("config/parameters.php");
+include_once("helpers/formato.php");
+
+// La sesión guarda el usuario, el carrito y los avisos entre páginas.
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path'     => '/',
+    'secure'   => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
+    'httponly' => true,
+    'samesite' => 'Lax',
+]);
+session_start();
 
 function showError($codigo, $mensaje)
 {
     http_response_code($codigo);
-    $codigoError = $codigo;
+
+    $codigoError  = $codigo;
     $mensajeError = $mensaje;
-    $vista = "views/error.php";
-    include_once "views/main.php";
+    $vista        = __DIR__ . '/views/error.php';
+
+    include __DIR__ . '/views/main.php';
     exit;
 }
 
-if (!isset($_GET['controller'])) {
+if (!isset($_GET['controller']) || $_GET['controller'] === '') {
     header("Location: " . url . "?controller=" . default_controller);
     exit;
 }
 
-$controladorUrl = $_GET['controller'];
-$nombreControlador = $controladorUrl . "Controller";
-$archivoControlador = "controllers/" . $nombreControlador . ".php";
+$controllerParam = $_GET['controller'];
 
-if (!file_exists($archivoControlador)) {
-    showError(404, "No existe el controller " . $nombreControlador);
+// ucfirst pone la primera letra en mayúscula: ?controller=usuario -> UsuarioController
+$nombre_controller = ucfirst($controllerParam) . "Controller";
+$controllerFile    = __DIR__ . "/controllers/" . $nombre_controller . ".php";
+
+if (!file_exists($controllerFile)) {
+    showError(404, "No existe el controller " . $nombre_controller);
 }
 
-include_once $archivoControlador;
+include_once $controllerFile;
 
-if (!class_exists($nombreControlador)) {
-    showError(500, "El fichero existe pero no contiene la clase " . $nombreControlador);
+if (!class_exists($nombre_controller)) {
+    showError(500, "El fichero existe pero no contiene la clase " . $nombre_controller);
 }
 
-$controlador = new $nombreControlador();
+$controller = new $nombre_controller();
 
-$accion = default_action;
+$action = default_action;
 if (isset($_GET['action']) && $_GET['action'] !== '') {
-    $accion = $_GET['action'];
+    $action = $_GET['action'];
 }
 
-if (!is_callable([$controlador, $accion])) {
-    showError(404, "No existe la action \"" . $accion . "\" en " . $nombreControlador);
+if (!is_callable([$controller, $action])) {
+    showError(404, "No existe la action \"" . $action . "\" en " . $nombre_controller);
 }
-if($_GET["action"]=="api"){
-    header("Conten-Type: application/json; charset=utf-8");
+
+if ($controllerParam === 'api') {
+    header("Content-Type: application/json; charset=utf-8");
 }
-$controlador->$accion();
-//
+
+$controller->$action();
